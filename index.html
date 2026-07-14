@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orivion — Agencia de Marketing Digital</title>
+  <meta name="description" content="Orivion es una agencia de marketing digital que impulsa tu negocio con estrategias de social media, SEO, publicidad digital, branding, IA y automatización.">
+  <meta property="og:title" content="Orivion — Agencia de Marketing Digital">
+  <meta property="og:description" content="Impulsamos tu negocio con estrategias de marketing digital, IA y automatización.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ======== CUSTOM CURSOR ======== -->
+  <div class="cursor-orb" id="cursor-orb"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ======== NAVBAR ======== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="navbar-logo">
+        <span class="logo-icon">O</span>
+        Orivion
+      </a>
+
+      <div class="navbar-links" id="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#testimonios">Resultados</a>
+        <a href="#contacto" class="navbar-cta">Hablemos →</a>
+      </div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <div class="hero-grid"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Agencia de Marketing Digital
+        </div>
+
+        <h1 class="hero-title">
+          Hacemos que tu marca<br>
+          <span class="text-gradient text-shimmer">domine el digital</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Estrategias de marketing, tecnología e IA que transforman tu presencia digital en resultados reales para tu negocio.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contacto" class="btn-primary magnetic-hover" id="hero-cta-primary">
+            Empezar ahora
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#servicios" class="btn-secondary magnetic-hover" id="hero-cta-secondary">
+            Ver servicios
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-value" data-count="150" data-suffix="+">0+</div>
+            <div class="hero-stat-label">Clientes activos</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value" data-count="98" data-suffix="%">0%</div>
+            <div class="hero-stat-label">Tasa de retención</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value" data-count="3" data-suffix="x">0x</div>
+            <div class="hero-stat-label">ROI medio</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SERVICIOS ======== -->
+  <section class="section services" id="servicios">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-label mx-auto"><span class="dot"></span> Lo que hacemos</div>
+        <h2 class="section-title">Soluciones <span class="text-gradient">360°</span> para tu negocio</h2>
+        <p class="section-subtitle">
+          Desde la estrategia hasta la ejecución, cubrimos cada aspecto del marketing digital que tu marca necesita para crecer.
+        </p>
+      </div>
+
+      <div class="services-grid stagger-children">
+        <div class="service-card reveal reveal-delay-1" id="service-social">
+          <div class="service-icon">📱</div>
+          <h3>Social Media Marketing</h3>
+          <p>Gestión integral de redes sociales. Contenido que engancha, comunidades que crecen y métricas que importan.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2" id="service-seo">
+          <div class="service-icon">🔍</div>
+          <h3>SEO & Posicionamiento</h3>
+          <p>Domina los resultados de búsqueda. Auditorías técnicas, contenido optimizado y estrategias de link building.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3" id="service-web">
+          <div class="service-icon">💻</div>
+          <h3>Diseño Web & Desarrollo</h3>
+          <p>Webs que convierten. Diseño premium, rendimiento optimizado y experiencias de usuario excepcionales.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1" id="service-ads">
+          <div class="service-icon">📢</div>
+          <h3>Publicidad Digital</h3>
+          <p>Campañas en Google Ads, Meta Ads y TikTok Ads. Segmentación precisa y optimización continua del ROI.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2" id="service-branding">
+          <div class="service-icon">🎨</div>
+          <h3>Branding & Identidad Visual</h3>
+          <p>Marcas que dejan huella. Logotipos, guías de estilo, sistemas visuales que comunican tu esencia.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3" id="service-email">
+          <div class="service-icon">✉️</div>
+          <h3>Email Marketing</h3>
+          <p>Automatización inteligente, secuencias de nurturing y campañas que generan ventas mientras duermes.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1" id="service-content">
+          <div class="service-icon">✍️</div>
+          <h3>Marketing de Contenidos</h3>
+          <p>Copywriting persuasivo, artículos de blog, guiones de vídeo y contenido que posiciona y convierte.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2" id="service-strategy">
+          <div class="service-icon">📊</div>
+          <h3>Consultoría & Estrategia</h3>
+          <p>Análisis profundo de tu mercado, competencia y audiencia. Planes de acción medibles y orientados a resultados.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3" id="service-ai">
+          <div class="service-icon">🤖</div>
+          <h3>IA & Automatización</h3>
+          <p>Chatbots inteligentes, automatización de ventas con IA y herramientas que multiplican la productividad de tu equipo.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1" id="service-sops">
+          <div class="service-icon">⚙️</div>
+          <h3>SOPs & Procesos</h3>
+          <p>Sistemas y procedimientos operativos que escalan tu negocio. Documenta, automatiza y delega sin perder calidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SOBRE NOSOTROS ======== -->
+  <section class="section about" id="nosotros">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content reveal-left">
+          <div class="section-label"><span class="dot"></span> Sobre Orivion</div>
+          <h2 class="section-title">No somos una agencia más.<br><span class="text-gradient">Somos tu equipo.</span></h2>
+          <p class="section-subtitle">
+            En Orivion combinamos creatividad, datos y tecnología para diseñar estrategias que realmente mueven la aguja. No creemos en fórmulas genéricas — cada cliente es un reto único.
+          </p>
+
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">🎯</div>
+              <div>
+                <h4>Orientados a resultados</h4>
+                <p>Cada acción que tomamos está respaldada por datos y enfocada en generar ROI para tu negocio.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">⚡</div>
+              <div>
+                <h4>Ejecución ágil</h4>
+                <p>Sprints semanales, comunicación directa y sin burocracia. Tu proyecto avanza cada día.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">🧠</div>
+              <div>
+                <h4>Tecnología de vanguardia</h4>
+                <p>Integramos IA y herramientas de automatización para maximizar el impacto de cada campaña.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-stats reveal-right">
+          <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-number" data-count="150" data-suffix="+">0+</div>
+            <div class="stat-label">Clientes satisfechos</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-number" data-count="500" data-suffix="+">0+</div>
+            <div class="stat-label">Proyectos entregados</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-number" data-count="12" data-suffix="M+">0M+</div>
+            <div class="stat-label">Inversión gestionada (€)</div>
+          </div>
+          <div class="stat-card reveal reveal-delay-4">
+            <div class="stat-number" data-count="5" data-suffix="">0</div>
+            <div class="stat-label">Años de experiencia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PROCESO ======== -->
+  <section class="section process" id="proceso">
+    <div class="container">
+      <div class="process-header reveal">
+        <div class="section-label mx-auto"><span class="dot"></span> Cómo trabajamos</div>
+        <h2 class="section-title">Un proceso que <span class="text-gradient">funciona</span></h2>
+        <p class="section-subtitle">
+          Cuatro pasos claros para llevar tu negocio del punto A al punto B. Sin rodeos, sin sorpresas.
+        </p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1" id="process-step-1">
+          <div class="process-step-number">01</div>
+          <h3>Diagnóstico</h3>
+          <p>Analizamos tu negocio, mercado, competencia y audiencia para entender dónde estás y adónde quieres llegar.</p>
+        </div>
+
+        <div class="process-step reveal reveal-delay-2" id="process-step-2">
+          <div class="process-step-number">02</div>
+          <h3>Estrategia</h3>
+          <p>Diseñamos un plan a medida con objetivos claros, canales definidos y KPIs que puedes seguir en tiempo real.</p>
+        </div>
+
+        <div class="process-step reveal reveal-delay-3" id="process-step-3">
+          <div class="process-step-number">03</div>
+          <h3>Ejecución</h3>
+          <p>Nuestro equipo pone todo en marcha: contenidos, campañas, automatizaciones y optimización continua.</p>
+        </div>
+
+        <div class="process-step reveal reveal-delay-4" id="process-step-4">
+          <div class="process-step-number">04</div>
+          <h3>Resultados</h3>
+          <p>Reportes transparentes, análisis de rendimiento y optimización constante para maximizar tu inversión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== TESTIMONIOS ======== -->
+  <section class="section testimonials" id="testimonios">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-label mx-auto"><span class="dot"></span> Resultados reales</div>
+        <h2 class="section-title">Lo que dicen <span class="text-gradient">nuestros clientes</span></h2>
+        <p class="section-subtitle">
+          Cada proyecto es una historia de éxito. Estas son algunas de las marcas que han confiado en nosotros.
+        </p>
+      </div>
+
+      <div class="testimonials-track" id="testimonials-track">
+        <div class="testimonial-card" id="testimonial-1">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Orivion transformó nuestra presencia online por completo. En 3 meses duplicamos los leads y redujimos el coste por adquisición un 40%. Son un equipo de otro nivel."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MG</div>
+            <div>
+              <div class="testimonial-name">María García</div>
+              <div class="testimonial-role">CEO, TechStart España</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-2">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"La estrategia de IA y automatización que implementaron nos ahorró 20 horas semanales y aumentó nuestras ventas un 65%. Mejor inversión que hemos hecho."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">CR</div>
+            <div>
+              <div class="testimonial-name">Carlos Ruiz</div>
+              <div class="testimonial-role">Director, Innova Retail</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-3">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Profesionalismo total. Desde el branding hasta las campañas de ads, todo impecable. Nuestro engagement en redes creció un 300% en 6 meses."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AL</div>
+            <div>
+              <div class="testimonial-name">Ana López</div>
+              <div class="testimonial-role">Fundadora, Estudio Creativo Menta</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-4">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Nos diseñaron los SOPs de ventas y marketing que necesitábamos para escalar. Pasamos de 3 a 12 empleados sin perder calidad gracias a sus procesos."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JP</div>
+            <div>
+              <div class="testimonial-name">Javier Pérez</div>
+              <div class="testimonial-role">COO, GrowFast Agency</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-5">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"El equipo de Orivion entiende el negocio, no solo el marketing. Su consultoría estratégica nos ayudó a pivotar y encontrar un nicho mucho más rentable."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">LS</div>
+            <div>
+              <div class="testimonial-name">Laura Sánchez</div>
+              <div class="testimonial-role">CMO, FoodTech Solutions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-controls">
+        <button class="testimonial-btn" id="testimonial-prev" aria-label="Anterior">←</button>
+        <div class="testimonial-dots">
+          <span class="testimonial-dot active" data-index="0"></span>
+          <span class="testimonial-dot" data-index="1"></span>
+          <span class="testimonial-dot" data-index="2"></span>
+        </div>
+        <button class="testimonial-btn" id="testimonial-next" aria-label="Siguiente">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA ======== -->
+  <section class="section cta-section" id="contacto">
+    <div class="container">
+      <div class="cta-card reveal-scale">
+        <h2 class="cta-title">¿Listo para <span class="text-gradient">despegar</span>?</h2>
+        <p class="cta-subtitle">
+          Cuéntanos tu proyecto y te diseñamos una estrategia personalizada. Sin compromiso, sin letra pequeña.
+        </p>
+        <div class="cta-actions">
+          <a href="mailto:hola@orivion.com" class="btn-primary magnetic-hover" id="cta-email">
+            hola@orivion.com
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://wa.me/34600000000" class="btn-secondary" id="cta-whatsapp" target="_blank" rel="noopener">
+            WhatsApp →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">O</span>
+            Orivion
+          </div>
+          <p>Agencia de marketing digital especializada en estrategia, creatividad y tecnología para hacer crecer tu negocio.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social" aria-label="Instagram" id="social-instagram">📸</a>
+            <a href="#" class="footer-social" aria-label="LinkedIn" id="social-linkedin">💼</a>
+            <a href="#" class="footer-social" aria-label="Twitter" id="social-twitter">🐦</a>
+            <a href="#" class="footer-social" aria-label="TikTok" id="social-tiktok">🎵</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Servicios</h4>
+          <a href="#servicios">Social Media</a>
+          <a href="#servicios">SEO</a>
+          <a href="#servicios">Publicidad Digital</a>
+          <a href="#servicios">Diseño Web</a>
+          <a href="#servicios">IA & Automatización</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Empresa</h4>
+          <a href="#nosotros">Sobre nosotros</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#testimonios">Resultados</a>
+          <a href="#">Blog</a>
+          <a href="#">Carreras</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contacto</h4>
+          <a href="mailto:hola@orivion.com">hola@orivion.com</a>
+          <a href="tel:+34600000000">+34 600 000 000</a>
+          <a href="#">Madrid, España</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Orivion. Todos los derechos reservados.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Política de privacidad</a>
+          <a href="#">Términos de uso</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
