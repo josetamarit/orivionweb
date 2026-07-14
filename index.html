@@ -419,14 +419,46 @@
       <div class="footer-bottom">
         <p>&copy; 2026 Orivion. Todos los derechos reservados.</p>
         <div class="footer-bottom-links">
-          <a href="#">Política de privacidad</a>
-          <a href="#">Términos de uso</a>
-          <a href="#">Cookies</a>
+          <a href="privacidad.html">Política de privacidad</a>
+          <a href="aviso-legal.html">Aviso legal</a>
+          <a href="cookies.html">Cookies</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- ======== COOKIE BANNER ======== -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p><strong>🍪 Cookies</strong></p>
+        <p>Utilizamos cookies propias y de terceros para analizar el uso de la web y mejorar nuestros servicios. Puedes aceptar todas o solo las necesarias. <a href="cookies.html">Más información</a>.</p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn-reject" id="cookie-reject">Solo necesarias</button>
+        <button class="cookie-btn-accept" id="cookie-accept">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    // Cookie consent logic
+    (function() {
+      const banner = document.getElementById('cookie-banner');
+      const consent = localStorage.getItem('orivion_cookie_consent');
+      if (!consent) {
+        banner.classList.add('visible');
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function() {
+        localStorage.setItem('orivion_cookie_consent', 'all');
+        banner.classList.remove('visible');
+      });
+      document.getElementById('cookie-reject').addEventListener('click', function() {
+        localStorage.setItem('orivion_cookie_consent', 'necessary');
+        banner.classList.remove('visible');
+      });
+    })();
+  </script>
 </body>
 </html>
