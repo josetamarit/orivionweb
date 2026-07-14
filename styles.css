@@ -361,22 +361,34 @@ button {
 }
 
 .navbar-cta {
-  padding: 0.6rem 1.4rem;
-  background: var(--gradient-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: white !important;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all var(--transition-normal);
 }
 
 .navbar-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
 }
 
-.navbar-cta::after {
-  display: none !important;
+.navbar-cta svg {
+  transition: transform var(--transition-normal);
+}
+
+.navbar-cta:hover svg {
+  transform: translateX(3px);
 }
 
 /* Mobile menu button */
