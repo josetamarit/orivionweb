@@ -914,6 +914,11 @@ button {
   margin: 0 auto;
 }
 
+.testimonials-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
 .testimonials-track {
   display: flex;
   gap: var(--space-xl);
@@ -1313,6 +1318,7 @@ button {
   /* Testimonials mobile */
   .testimonial-card {
     min-width: 100%;
+    flex: 0 0 100%;
   }
 
   /* CTA mobile */
@@ -1725,16 +1731,6 @@ button {
   .footer-social:active {
     transform: scale(0.9);
     background: var(--accent-primary);
-  }
-
-  /* Mobile scroll snap for process steps */
-  .testimonials-track {
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .testimonial-card {
-    scroll-snap-align: start;
   }
 }
 
