@@ -3,40 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orivion — Agencia de Marketing Digital</title>
-  <meta name="description" content="Orivion es una agencia de marketing digital que impulsa tu negocio con estrategias de social media, SEO, publicidad digital, branding, IA y automatización.">
-  <meta property="og:title" content="Orivion — Agencia de Marketing Digital">
-  <meta property="og:description" content="Impulsamos tu negocio con estrategias de marketing digital, IA y automatización.">
+  <title>Orivion — Agencia de marketing digital en Valencia</title>
+  <meta name="description" content="Agencia de marketing digital en Valencia. Estrategia, medios de pago, contenido y automatización con IA para marcas en crecimiento. Equipo senior, sin permanencias.">
+  <meta property="og:title" content="Orivion — Agencia de marketing digital en Valencia">
+  <meta property="og:description" content="Estrategia, medios de pago, contenido y automatización con IA. Equipo senior desde Valencia.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0a0a0f">
+  <meta property="og:locale" content="es_ES">
+  <meta name="theme-color" content="#08080D">
+
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Marca que el JS ha arrancado. Sin esto el contenido no se oculta nunca. -->
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-
-  <!-- ======== CUSTOM CURSOR ======== -->
-  <div class="cursor-orb" id="cursor-orb"></div>
-  <div class="cursor-ring" id="cursor-ring"></div>
 
   <!-- ======== NAVBAR ======== -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#" class="navbar-logo">
-        <span class="logo-icon">O</span>
-        Orivion
+      <!-- Logotipo original recortado del archivo de marca y pasado a PNG con
+           transparencia. Es el único elemento de la web con degradado. -->
+      <a href="#" class="navbar-logo" aria-label="Orivion, inicio">
+        <img class="logo-img" src="img/orivion-logo.png" alt="Orivion" width="396" height="84" decoding="async">
       </a>
 
       <div class="navbar-links" id="nav-links">
         <a href="#servicios">Servicios</a>
         <a href="#nosotros">Nosotros</a>
+        <a href="#estandares">Estándares</a>
         <a href="#proceso">Proceso</a>
-        <a href="#testimonios">Resultados</a>
         <a href="#contacto" class="navbar-cta">
           Hablemos
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
         <span></span>
         <span></span>
         <span></span>
@@ -45,359 +52,530 @@
   </nav>
 
   <!-- ======== HERO ======== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="hero-orb hero-orb-1"></div>
-      <div class="hero-orb hero-orb-2"></div>
-      <div class="hero-orb hero-orb-3"></div>
-      <div class="hero-grid"></div>
-    </div>
-
+  <header class="hero" id="hero">
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          Agencia de Marketing Digital
+      <div class="hero-layout">
+
+        <div class="hero-content">
+          <p class="hero-badge">
+            <span class="badge-dot"></span>
+            Marketing digital · Valencia
+          </p>
+
+          <h1 class="hero-title">
+            Crecimiento por <span class="mark">diseño</span>,
+            <span class="line-2">no por suerte.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Somos la agencia que se sienta con tus números. Estrategia, medios de
+            pago, contenido y automatización con IA, ejecutados por un equipo
+            senior desde Valencia.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contacto" class="btn-primary" id="hero-cta-primary">
+              Solicitar diagnóstico
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#servicios" class="btn-secondary" id="hero-cta-secondary">
+              Ver servicios
+            </a>
+          </div>
+
+          <!-- Compromisos verificables, no métricas de escaparate -->
+          <div class="hero-promises">
+            <div class="hero-promise">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+              <span class="hero-promise-text">
+                <strong>Respuesta en 24 h</strong>
+                Revisamos tu caso antes de la primera llamada
+              </span>
+            </div>
+            <div class="hero-promise">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 7.6-1.7"/></svg>
+              <span class="hero-promise-text">
+                <strong>Sin permanencia</strong>
+                Nos quedamos por resultados, no por contrato
+              </span>
+            </div>
+            <div class="hero-promise">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c0-4.1 3.4-6.5 7.5-6.5s7.5 2.4 7.5 6.5"/></svg>
+              <span class="hero-promise-text">
+                <strong>Perfiles senior</strong>
+                En tu cuenta desde el primer día
+              </span>
+            </div>
+          </div>
         </div>
 
-        <h1 class="hero-title">
-          Convertimos tu marca en<br>
-          <span class="text-gradient text-shimmer">referente digital</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          Estrategias de marketing, tecnología e IA que transforman tu presencia digital en resultados reales para tu negocio.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#contacto" class="btn-primary magnetic-hover" id="hero-cta-primary">
-            Empezar ahora
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#servicios" class="btn-secondary magnetic-hover" id="hero-cta-secondary">
-            Ver servicios
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-value" data-count="150" data-suffix="+">0+</div>
-            <div class="hero-stat-label">Clientes activos</div>
+        <!-- Panel de método. Dice cómo trabajamos sin prometer cifras. -->
+        <aside class="hero-panel" aria-label="Método de trabajo de Orivion">
+          <div class="panel-head">
+            <strong>Sistema Orivion</strong>
+            <span>Método</span>
           </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value" data-count="98" data-suffix="%">0%</div>
-            <div class="hero-stat-label">Tasa de retención</div>
+          <div class="panel-rows">
+            <div class="panel-row">
+              <span class="panel-row-index">01</span>
+              <span class="panel-row-name">Diagnóstico y datos</span>
+              <span class="panel-row-state">Semana 1</span>
+            </div>
+            <div class="panel-row">
+              <span class="panel-row-index">02</span>
+              <span class="panel-row-name">Arquitectura de canal</span>
+              <span class="panel-row-state">Semana 2</span>
+            </div>
+            <div class="panel-row">
+              <span class="panel-row-index">03</span>
+              <span class="panel-row-name">Ejecución y creatividad</span>
+              <span class="panel-row-state">Continuo</span>
+            </div>
+            <div class="panel-row">
+              <span class="panel-row-index">04</span>
+              <span class="panel-row-name">Lectura de resultados</span>
+              <span class="panel-row-state">Semanal</span>
+            </div>
           </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value" data-count="3" data-suffix="x">0x</div>
-            <div class="hero-stat-label">ROI medio</div>
+          <div class="panel-foot">
+            <span>Primeros datos accionables</span>
+            <strong>14 días</strong>
           </div>
-        </div>
+        </aside>
+
       </div>
     </div>
-  </section>
+  </header>
+
+  <main>
 
   <!-- ======== SERVICIOS ======== -->
   <section class="section services" id="servicios">
     <div class="container">
       <div class="services-header reveal">
-        <div class="section-label mx-auto"><span class="dot"></span> Lo que hacemos</div>
-        <h2 class="section-title">Soluciones <span class="text-gradient">360°</span> para tu negocio</h2>
+        <div class="section-label mx-auto"><span class="dot"></span> 01 — Servicios</div>
+        <h2 class="section-title">Diez capacidades, un solo equipo.</h2>
         <p class="section-subtitle">
-          Desde la estrategia hasta la ejecución, cubrimos cada aspecto del marketing digital que tu marca necesita para crecer.
+          Cubrimos la cadena completa: estrategia, ejecución y medición. Sin
+          derivar tu cuenta a terceros a mitad de proyecto.
         </p>
       </div>
 
-      <div class="services-grid stagger-children">
-        <div class="service-card reveal reveal-delay-1" id="service-social">
-          <div class="service-icon">📱</div>
-          <h3>Social Media Marketing</h3>
-          <p>Gestión integral de redes sociales. Contenido que engancha, comunidades que crecen y métricas que importan.</p>
-        </div>
+      <div class="services-grid">
+        <article class="service-card reveal reveal-delay-1" id="service-social">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5c0 4.1-4 7.5-9 7.5-1.2 0-2.3-.2-3.3-.5L4 21l1.3-3.6C3.9 16 3 13.9 3 11.5 3 7.4 7 4 12 4s9 3.4 9 7.5Z"/><path d="M14.6 9.2a1.8 1.8 0 0 0-2.6.1 1.8 1.8 0 0 0-2.6-.1c-.8.8-.7 2 .1 2.8L12 14.4l2.5-2.4c.8-.8.9-2 .1-2.8Z"/></svg>
+          </div>
+          <h3>Redes sociales</h3>
+          <p>Estrategia de contenido, producción y comunidad. Cada mes revisamos qué formatos rinden y reasignamos el esfuerzo a los que funcionan.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-2" id="service-seo">
-          <div class="service-icon">🔍</div>
-          <h3>SEO & Posicionamiento</h3>
-          <p>Domina los resultados de búsqueda. Auditorías técnicas, contenido optimizado y estrategias de link building.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-2" id="service-seo">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/><path d="M8 13v-2M10.5 13V8M13 13v-3.2"/></svg>
+          </div>
+          <h3>SEO</h3>
+          <p>Auditoría técnica, arquitectura de contenidos y autoridad. Atacamos las búsquedas con intención de compra, no las que engordan un informe.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-3" id="service-web">
-          <div class="service-icon">💻</div>
-          <h3>Diseño Web & Desarrollo</h3>
-          <p>Webs que convierten. Diseño premium, rendimiento optimizado y experiencias de usuario excepcionales.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-3" id="service-web">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="15.5" rx="1.5"/><path d="M2.5 8.5h19"/><path d="M5.6 6.2h.01M8.2 6.2h.01"/><path d="M11 12.2l5.6 2.2-2.4.9-.9 2.4z"/></svg>
+          </div>
+          <h3>Diseño y desarrollo web</h3>
+          <p>Webs y ecommerce rápidos y medibles. Diseñados para convertir y para que puedas medir cada paso del embudo.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-1" id="service-ads">
-          <div class="service-icon">📢</div>
-          <h3>Publicidad Digital</h3>
-          <p>Campañas en Google Ads, Meta Ads y TikTok Ads. Segmentación precisa y optimización continua del ROI.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-1" id="service-ads">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5v3A1.5 1.5 0 0 0 4.5 15H7l6 4V5L7 9H4.5A1.5 1.5 0 0 0 3 10.5Z"/><path d="M16.6 9.6a4 4 0 0 1 0 4.8"/><path d="M19.2 7a7.5 7.5 0 0 1 0 10"/></svg>
+          </div>
+          <h3>Medios de pago</h3>
+          <p>Google, Meta y TikTok Ads. Estructura de campañas, producción de creatividades y escalado del presupuesto solo cuando el dato lo respalda.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-2" id="service-branding">
-          <div class="service-icon">🎨</div>
-          <h3>Branding & Identidad Visual</h3>
-          <p>Marcas que dejan huella. Logotipos, guías de estilo, sistemas visuales que comunican tu esencia.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-2" id="service-branding">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="5.6"/><rect x="9.4" y="9.4" width="10.2" height="10.2" rx="1"/></svg>
+          </div>
+          <h3>Marca e identidad</h3>
+          <p>Identidad, sistema visual y manual de uso. Coherencia en todos los puntos de contacto, aplicable por tu equipo sin depender de nosotros.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-3" id="service-email">
-          <div class="service-icon">✉️</div>
-          <h3>Email Marketing</h3>
-          <p>Automatización inteligente, secuencias de nurturing y campañas que generan ventas mientras duermes.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-3" id="service-email">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M3.2 6.6l8.8 5.9 8.8-5.9"/></svg>
+          </div>
+          <h3>Email y automatización</h3>
+          <p>Flujos de captación, recuperación de carrito y fidelización. Se construyen una vez y siguen generando ingresos de forma continua.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-1" id="service-content">
-          <div class="service-icon">✍️</div>
-          <h3>Marketing de Contenidos</h3>
-          <p>Copywriting persuasivo, artículos de blog, guiones de vídeo y contenido que posiciona y convierte.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-1" id="service-content">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.8 3.7a2.1 2.1 0 0 1 3 3L9 17.5l-4.5 1.5L6 14.5 16.8 3.7Z"/><path d="M14.6 5.9l3 3"/><path d="M13 20.8h8"/></svg>
+          </div>
+          <h3>Contenido y copy</h3>
+          <p>Textos de conversión, artículos y guiones audiovisuales. Escritos por especialistas que entienden qué vende tu producto.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-2" id="service-strategy">
-          <div class="service-icon">📊</div>
-          <h3>Consultoría & Estrategia</h3>
-          <p>Análisis profundo de tu mercado, competencia y audiencia. Planes de acción medibles y orientados a resultados.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-2" id="service-strategy">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5h17"/><path d="M6.5 20.5V13M11.5 20.5V8M16.5 20.5v-5"/><path d="M6.5 10.5 11.5 5l5 4.5 4-3.5"/></svg>
+          </div>
+          <h3>Estrategia y consultoría</h3>
+          <p>Diagnóstico, posicionamiento y plan de canales con objetivos y KPIs definidos antes de gastar el primer euro.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-3" id="service-ai">
-          <div class="service-icon">🤖</div>
-          <h3>IA & Automatización</h3>
-          <p>Chatbots inteligentes, automatización de ventas con IA y herramientas que multiplican la productividad de tu equipo.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-3" id="service-ai">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.3"/><circle cx="5" cy="17.5" r="2.3"/><circle cx="19" cy="17.5" r="2.3"/><path d="M10.4 6.9 6.4 15.5M13.6 6.9l4 8.6M7.3 17.5h9.4"/></svg>
+          </div>
+          <h3>IA aplicada</h3>
+          <p>Automatizamos investigación, producción y reporting para ir más rápido. El criterio y la decisión estratégica siguen siendo humanos.</p>
+        </article>
 
-        <div class="service-card reveal reveal-delay-1" id="service-sops">
-          <div class="service-icon">⚙️</div>
-          <h3>SOPs & Procesos</h3>
-          <p>Sistemas y procedimientos operativos que escalan tu negocio. Documenta, automatiza y delega sin perder calidad.</p>
-        </div>
+        <article class="service-card reveal reveal-delay-1" id="service-sops">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="3.5" width="15" height="17" rx="1.5"/><path d="M8.4 9.2l1.7 1.7 3.5-3.5"/><path d="M8.4 15.2l1.7 1.7 3.5-3.5"/></svg>
+          </div>
+          <h3>Procesos y documentación</h3>
+          <p>Documentamos tu operativa de marketing para que escale sin depender de una persona concreta. Todo queda por escrito y es tuyo.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ======== SOBRE NOSOTROS ======== -->
+  <!-- ======== NOSOTROS ======== -->
   <section class="section about" id="nosotros">
     <div class="container">
       <div class="about-grid">
         <div class="about-content reveal-left">
-          <div class="section-label"><span class="dot"></span> Sobre Orivion</div>
-          <h2 class="section-title">No somos una agencia más.<br><span class="text-gradient">Somos tu equipo.</span></h2>
+          <div class="section-label"><span class="dot"></span> 02 — Nosotros</div>
+          <h2 class="section-title">Un equipo senior, <span class="mark">sin capas intermedias</span>.</h2>
           <p class="section-subtitle">
-            En Orivion combinamos creatividad, datos y tecnología para diseñar estrategias que realmente mueven la aguja. No creemos en fórmulas genéricas — cada cliente es un reto único.
+            Hablas directamente con quien ejecuta tu cuenta. No hay un comercial
+            que promete una cosa y un equipo distinto que entrega otra.
+            Trabajamos con un número limitado de clientes para que eso siga
+            siendo cierto.
           </p>
 
           <div class="about-features">
             <div class="about-feature">
-              <div class="about-feature-icon">🎯</div>
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5h17"/><path d="M6.5 20.5V14M11.5 20.5V8.5M16.5 20.5v-9M20.5 20.5V5"/></svg>
+              </div>
               <div>
-                <h4>Orientados a resultados</h4>
-                <p>Cada acción que tomamos está respaldada por datos y enfocada en generar ROI para tu negocio.</p>
+                <h4>Datos en tus propias cuentas</h4>
+                <p>Los accesos y las plataformas son tuyos. Cada cifra que te damos se puede verificar en origen, sin pasar por nosotros.</p>
               </div>
             </div>
             <div class="about-feature">
-              <div class="about-feature-icon">⚡</div>
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c0-4.1 3.4-6.5 7.5-6.5s7.5 2.4 7.5 6.5"/></svg>
+              </div>
               <div>
-                <h4>Ejecución ágil</h4>
-                <p>Sprints semanales, comunicación directa y sin burocracia. Tu proyecto avanza cada día.</p>
+                <h4>Un responsable asignado</h4>
+                <p>Un perfil senior con nombre y teléfono directo desde el primer día. No un buzón de soporte ni un gestor que rota cada trimestre.</p>
               </div>
             </div>
             <div class="about-feature">
-              <div class="about-feature-icon">🧠</div>
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 3.5l1.7 4.8 4.8 1.7-4.8 1.7L11 16.5l-1.7-4.8-4.8-1.7 4.8-1.7L11 3.5Z"/><path d="M18 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z"/></svg>
+              </div>
               <div>
-                <h4>Tecnología de vanguardia</h4>
-                <p>Integramos IA y herramientas de automatización para maximizar el impacto de cada campaña.</p>
+                <h4>IA donde aporta, no donde luce</h4>
+                <p>La usamos para investigación, producción y reporting. La estrategia y lo que te contamos lo firma una persona.</p>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- ⚠️ REVISAR ANTES DE PUBLICAR: estas cuatro cifras vienen de la versión
+             anterior de la web. Cámbialas por las tuyas reales; si un cliente las
+             pide y no cuadran, pierdes el proyecto (y en publicidad, además, es
+             sancionable). Si aún no tienes histórico, borra este bloque entero. -->
         <div class="about-stats reveal-right">
           <div class="stat-card reveal reveal-delay-1">
             <div class="stat-number" data-count="150" data-suffix="+">0+</div>
-            <div class="stat-label">Clientes satisfechos</div>
+            <div class="stat-label">Clientes atendidos</div>
           </div>
           <div class="stat-card reveal reveal-delay-2">
             <div class="stat-number" data-count="500" data-suffix="+">0+</div>
             <div class="stat-label">Proyectos entregados</div>
           </div>
           <div class="stat-card reveal reveal-delay-3">
-            <div class="stat-number" data-count="12" data-suffix="M+">0M+</div>
-            <div class="stat-label">Inversión gestionada (€)</div>
+            <div class="stat-number" data-count="12" data-suffix="M€">0M€</div>
+            <div class="stat-label">Inversión gestionada</div>
           </div>
           <div class="stat-card reveal reveal-delay-4">
-            <div class="stat-number" data-count="5" data-suffix="">0</div>
-            <div class="stat-label">Años de experiencia</div>
+            <div class="stat-number" data-count="5" data-suffix=" años">0 años</div>
+            <div class="stat-label">De actividad</div>
           </div>
+          <p class="about-stats-note">
+            Cifras acumuladas desde el inicio de la actividad. Desglose
+            disponible bajo petición.
+          </p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ======== ESTÁNDARES ======== -->
+  <section class="section principles" id="estandares">
+    <div class="container">
+      <div class="principles-header reveal">
+        <div class="section-label mx-auto"><span class="dot"></span> 03 — Estándares</div>
+        <h2 class="section-title">Las condiciones, por escrito y antes de empezar.</h2>
+        <p class="section-subtitle">
+          Así evitamos la conversación incómoda a mitad de proyecto.
+        </p>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle-col reveal reveal-delay-1">
+          <h3>Lo que garantizamos</h3>
+          <ul class="principle-list">
+            <li>Precio cerrado antes de arrancar. No se mueve si no se mueve el alcance.</li>
+            <li>Los accesos, las cuentas y los activos son tuyos desde el primer día.</li>
+            <li>Informes verificables en origen, no capturas dentro de una diapositiva.</li>
+            <li>Un responsable senior asignado, con teléfono directo.</li>
+            <li>Si una palanca no rinde, te lo comunicamos nosotros primero.</li>
+          </ul>
+        </div>
+
+        <div class="principle-col negative reveal reveal-delay-2">
+          <h3>Lo que no vas a encontrar</h3>
+          <ul class="principle-list">
+            <li>Permanencias de doce meses.</li>
+            <li>Comisiones sobre tu inversión publicitaria: cobramos por trabajo, no por que gastes más.</li>
+            <li>Posiciones garantizadas en Google. Nadie puede garantizarlas.</li>
+            <li>Subcontratación de tu cuenta sin comunicártelo.</li>
+            <li>Informes de cuarenta páginas para tapar un mes malo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--
+  ======== EQUIPO ========
+  Esto es lo que más humaniza una web de agencia: las siete referencias que
+  miramos (Elogia, NeoAttack, Webimpacto…) tienen fotos reales del equipo con
+  nombre y cargo. Quita este comentario, mete de 3 a 6 fotos verticales
+  (recomendado 800×1000 px, en una carpeta /img) y cambia los nombres.
+  Los estilos ya están hechos en styles.css, en blanco y negro y pasando a
+  color al posar el cursor.
+
+  <section class="section team" id="equipo">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-label mx-auto"><span class="dot"></span> 04 — Equipo</div>
+        <h2 class="section-title">Quién va a llevar tu cuenta.</h2>
+        <p class="section-subtitle">Estas son las personas que van a trabajar en tu proyecto. Sin intermediarios.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-member reveal reveal-delay-1">
+          <img src="img/equipo-1.jpg" alt="Retrato de [Nombre], [cargo] en Orivion" width="800" height="1000">
+          <p class="team-name">Nombre Apellido</p>
+          <p class="team-role">Cargo</p>
+        </div>
+        <div class="team-member reveal reveal-delay-2">
+          <img src="img/equipo-2.jpg" alt="Retrato de [Nombre], [cargo] en Orivion" width="800" height="1000">
+          <p class="team-name">Nombre Apellido</p>
+          <p class="team-role">Cargo</p>
+        </div>
+        <div class="team-member reveal reveal-delay-3">
+          <img src="img/equipo-3.jpg" alt="Retrato de [Nombre], [cargo] en Orivion" width="800" height="1000">
+          <p class="team-name">Nombre Apellido</p>
+          <p class="team-role">Cargo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
 
   <!-- ======== PROCESO ======== -->
   <section class="section process" id="proceso">
     <div class="container">
       <div class="process-header reveal">
-        <div class="section-label mx-auto"><span class="dot"></span> Cómo trabajamos</div>
-        <h2 class="section-title">Un proceso que <span class="text-gradient">funciona</span></h2>
+        <div class="section-label mx-auto"><span class="dot"></span> 05 — Proceso</div>
+        <h2 class="section-title">Cuatro fases, ninguna de relleno.</h2>
         <p class="section-subtitle">
-          Cuatro pasos claros para llevar tu negocio del punto A al punto B. Sin rodeos, sin sorpresas.
+          El recorrido de un proyecto con nosotros, desde la primera llamada
+          hasta el informe mensual.
         </p>
       </div>
 
       <div class="process-steps">
-        <div class="process-step reveal reveal-delay-1" id="process-step-1">
+        <article class="process-step reveal reveal-delay-1" id="process-step-1">
           <div class="process-step-number">01</div>
           <h3>Diagnóstico</h3>
-          <p>Analizamos tu negocio, mercado, competencia y audiencia para entender dónde estás y adónde quieres llegar.</p>
-        </div>
+          <p>Analizamos tus datos, tu mercado y tu competencia antes de proponer nada. Salida: un informe con las palancas priorizadas.</p>
+        </article>
 
-        <div class="process-step reveal reveal-delay-2" id="process-step-2">
+        <article class="process-step reveal reveal-delay-2" id="process-step-2">
           <div class="process-step-number">02</div>
-          <h3>Estrategia</h3>
-          <p>Diseñamos un plan a medida con objetivos claros, canales definidos y KPIs que puedes seguir en tiempo real.</p>
-        </div>
+          <h3>Arquitectura</h3>
+          <p>Definimos canales, mensajes, presupuesto y KPIs. Sabes qué esperamos que ocurra, cuándo y con qué coste.</p>
+        </article>
 
-        <div class="process-step reveal reveal-delay-3" id="process-step-3">
+        <article class="process-step reveal reveal-delay-3" id="process-step-3">
           <div class="process-step-number">03</div>
           <h3>Ejecución</h3>
-          <p>Nuestro equipo pone todo en marcha: contenidos, campañas, automatizaciones y optimización continua.</p>
-        </div>
+          <p>Producción y lanzamiento. Revisión semanal del rendimiento y reasignación de presupuesto a lo que funciona.</p>
+        </article>
 
-        <div class="process-step reveal reveal-delay-4" id="process-step-4">
+        <article class="process-step reveal reveal-delay-4" id="process-step-4">
           <div class="process-step-number">04</div>
-          <h3>Resultados</h3>
-          <p>Reportes transparentes, análisis de rendimiento y optimización constante para maximizar tu inversión.</p>
-        </div>
+          <h3>Medición</h3>
+          <p>Informe mensual con inversión, retorno y decisiones tomadas. Con los datos abiertos en tus propias plataformas.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ======== TESTIMONIOS ======== -->
+  <!-- ======== TESTIMONIOS ========
+       ⚠️ REVISAR: sustituye estos cinco testimonios por reseñas reales (Google
+       reviews, un email del cliente con permiso, un vídeo corto). Los
+       testimonios inventados son publicidad engañosa y además se detectan a la
+       primera. Si aún no tienes ninguno, borra la sección completa: transmite
+       más una web sin testimonios que con testimonios que nadie puede comprobar. -->
   <section class="section testimonials" id="testimonios">
     <div class="container">
       <div class="testimonials-header reveal">
-        <div class="section-label mx-auto"><span class="dot"></span> Resultados reales</div>
-        <h2 class="section-title">Lo que dicen <span class="text-gradient">nuestros clientes</span></h2>
+        <div class="section-label mx-auto"><span class="dot"></span> 06 — Clientes</div>
+        <h2 class="section-title">Lo dicen ellos, no nosotros.</h2>
         <p class="section-subtitle">
-          Cada proyecto es una historia de éxito. Estas son algunas de las marcas que han confiado en nosotros.
+          Algunas de las marcas con las que hemos trabajado y qué obtuvieron.
         </p>
       </div>
 
       <div class="testimonials-wrapper">
         <div class="testimonials-track" id="testimonials-track">
-        <div class="testimonial-card" id="testimonial-1">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Orivion transformó nuestra presencia online por completo. En 3 meses duplicamos los leads y redujimos el coste por adquisición un 40%. Son un equipo de otro nivel."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">MG</div>
-            <div>
-              <div class="testimonial-name">María García</div>
-              <div class="testimonial-role">CEO, TechStart España</div>
+          <article class="testimonial-card" id="testimonial-1">
+            <div class="testimonial-stars" aria-label="5 de 5">★★★★★</div>
+            <p class="testimonial-text">«Orivion transformó nuestra presencia online por completo. En 3 meses duplicamos los leads y redujimos el coste por adquisición un 40%.»</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">MG</div>
+              <div>
+                <div class="testimonial-name">María García</div>
+                <div class="testimonial-role">CEO, TechStart España</div>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <div class="testimonial-card" id="testimonial-2">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"La estrategia de IA y automatización que implementaron nos ahorró 20 horas semanales y aumentó nuestras ventas un 65%. Mejor inversión que hemos hecho."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">CR</div>
-            <div>
-              <div class="testimonial-name">Carlos Ruiz</div>
-              <div class="testimonial-role">Director, Innova Retail</div>
+          <article class="testimonial-card" id="testimonial-2">
+            <div class="testimonial-stars" aria-label="5 de 5">★★★★★</div>
+            <p class="testimonial-text">«La automatización que nos montaron nos ahorró 20 horas a la semana y subió las ventas un 65%. La mejor inversión que hemos hecho.»</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">CR</div>
+              <div>
+                <div class="testimonial-name">Carlos Ruiz</div>
+                <div class="testimonial-role">Director, Innova Retail</div>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <div class="testimonial-card" id="testimonial-3">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Profesionalismo total. Desde el branding hasta las campañas de ads, todo impecable. Nuestro engagement en redes creció un 300% en 6 meses."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">AL</div>
-            <div>
-              <div class="testimonial-name">Ana López</div>
-              <div class="testimonial-role">Fundadora, Estudio Creativo Menta</div>
+          <article class="testimonial-card" id="testimonial-3">
+            <div class="testimonial-stars" aria-label="5 de 5">★★★★★</div>
+            <p class="testimonial-text">«Desde el branding hasta las campañas, todo impecable. Nuestro engagement en redes creció un 300% en 6 meses.»</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">AL</div>
+              <div>
+                <div class="testimonial-name">Ana López</div>
+                <div class="testimonial-role">Fundadora, Estudio Creativo Menta</div>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <div class="testimonial-card" id="testimonial-4">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Nos diseñaron los SOPs de ventas y marketing que necesitábamos para escalar. Pasamos de 3 a 12 empleados sin perder calidad gracias a sus procesos."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">JP</div>
-            <div>
-              <div class="testimonial-name">Javier Pérez</div>
-              <div class="testimonial-role">COO, GrowFast Agency</div>
+          <article class="testimonial-card" id="testimonial-4">
+            <div class="testimonial-stars" aria-label="5 de 5">★★★★★</div>
+            <p class="testimonial-text">«Nos escribieron los procesos de ventas y marketing que necesitábamos para escalar. Pasamos de 3 a 12 empleados sin perder calidad.»</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">JP</div>
+              <div>
+                <div class="testimonial-name">Javier Pérez</div>
+                <div class="testimonial-role">COO, GrowFast Agency</div>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <div class="testimonial-card" id="testimonial-5">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"El equipo de Orivion entiende el negocio, no solo el marketing. Su consultoría estratégica nos ayudó a pivotar y encontrar un nicho mucho más rentable."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">LS</div>
-            <div>
-              <div class="testimonial-name">Laura Sánchez</div>
-              <div class="testimonial-role">CMO, FoodTech Solutions</div>
+          <article class="testimonial-card" id="testimonial-5">
+            <div class="testimonial-stars" aria-label="5 de 5">★★★★★</div>
+            <p class="testimonial-text">«Entienden el negocio, no solo el marketing. Nos ayudaron a pivotar y encontrar un nicho bastante más rentable.»</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">LS</div>
+              <div>
+                <div class="testimonial-name">Laura Sánchez</div>
+                <div class="testimonial-role">CMO, FoodTech Solutions</div>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
         </div>
       </div>
 
       <div class="testimonials-controls">
-        <button class="testimonial-btn" id="testimonial-prev" aria-label="Anterior">←</button>
+        <button class="testimonial-btn" id="testimonial-prev" aria-label="Testimonio anterior">←</button>
         <div class="testimonial-dots">
           <span class="testimonial-dot active" data-index="0"></span>
           <span class="testimonial-dot" data-index="1"></span>
           <span class="testimonial-dot" data-index="2"></span>
         </div>
-        <button class="testimonial-btn" id="testimonial-next" aria-label="Siguiente">→</button>
+        <button class="testimonial-btn" id="testimonial-next" aria-label="Testimonio siguiente">→</button>
       </div>
     </div>
   </section>
 
-  <!-- ======== CTA ======== -->
+  <!-- ======== CONTACTO ======== -->
   <section class="section cta-section" id="contacto">
     <div class="container">
       <div class="cta-card reveal-scale">
-        <h2 class="cta-title">¿Listo para <span class="text-gradient">despegar</span>?</h2>
+        <h2 class="cta-title">Pon tus números <span class="mark">sobre la mesa</span>.</h2>
         <p class="cta-subtitle">
-          Cuéntanos tu proyecto y te diseñamos una estrategia personalizada. Sin compromiso, sin letra pequeña.
+          Cuéntanos dónde estás y qué quieres conseguir. Te devolvemos un
+          diagnóstico con las palancas que atacaríamos primero y el coste de
+          hacerlo. Sin compromiso.
         </p>
+
+        <!-- TODO: cambia TU_ID_DE_FORMSPREE por tu identificador real o el
+             formulario no llegará a ningún sitio. -->
         <form class="contact-form" id="contact-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
           <div class="form-row">
             <div class="form-group">
-              <input type="text" name="name" id="name" placeholder=" " required>
+              <input type="text" name="name" id="name" placeholder=" " autocomplete="name" required>
               <label for="name">Tu nombre</label>
             </div>
             <div class="form-group">
-              <input type="email" name="email" id="email" placeholder=" " required>
+              <input type="email" name="email" id="email" placeholder=" " autocomplete="email" required>
               <label for="email">Tu email</label>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" name="company" id="company" placeholder=" ">
-            <label for="company">Empresa / Proyecto (opcional)</label>
+            <input type="text" name="company" id="company" placeholder=" " autocomplete="organization">
+            <label for="company">Empresa o proyecto (opcional)</label>
           </div>
           <div class="form-group">
             <textarea name="message" id="message" rows="4" placeholder=" " required></textarea>
-            <label for="message">¿En qué podemos ayudarte?</label>
+            <label for="message">¿Qué quieres resolver?</label>
           </div>
-          
+
           <div class="form-footer">
             <p class="form-legal">
-              Al enviar aceptas nuestra <a href="privacidad.html">Política de privacidad</a>.
+              Al enviar aceptas nuestra <a href="privacidad.html">política de privacidad</a>.
+              Respondemos en menos de 24 h laborables.
             </p>
-            <button type="submit" class="btn-primary magnetic-hover" id="submit-btn">
-              Enviar mensaje
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <button type="submit" class="btn-primary" id="submit-btn">
+              Enviar
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             </button>
           </div>
-          <div class="form-status" id="form-status"></div>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
         </form>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ======== FOOTER ======== -->
   <footer class="footer" id="footer">
@@ -405,46 +583,58 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <span class="logo-icon">O</span>
-            Orivion
+            <img class="logo-img" src="img/orivion-logo.png" alt="Orivion" width="396" height="84" decoding="async">
           </div>
-          <p>Agencia de marketing digital especializada en estrategia, creatividad y tecnología para hacer crecer tu negocio.</p>
+          <p>
+            Agencia de marketing digital en Valencia. Estrategia, medios de pago,
+            contenido y automatización con IA para marcas en crecimiento.
+          </p>
+          <!-- TODO: pon aquí las URLs reales de vuestros perfiles. Un icono
+               social que no lleva a ningún sitio resta más de lo que suma. -->
           <div class="footer-socials">
-            <a href="#" class="footer-social" aria-label="Instagram" id="social-instagram">📸</a>
-            <a href="#" class="footer-social" aria-label="LinkedIn" id="social-linkedin">💼</a>
-            <a href="#" class="footer-social" aria-label="Twitter" id="social-twitter">🐦</a>
-            <a href="#" class="footer-social" aria-label="TikTok" id="social-tiktok">🎵</a>
+            <a href="#" class="footer-social" aria-label="Instagram de Orivion" id="social-instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.9h.01"/></svg>
+            </a>
+            <a href="#" class="footer-social" aria-label="LinkedIn de Orivion" id="social-linkedin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7.5 10.5V17M7.5 7.4h.01"/><path d="M11.6 17v-6.5M11.6 13.4c0-1.6 1-2.9 2.6-2.9s2.5 1.3 2.5 2.9V17"/></svg>
+            </a>
+            <a href="#" class="footer-social" aria-label="X (Twitter) de Orivion" id="social-twitter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+            </a>
+            <a href="#" class="footer-social" aria-label="TikTok de Orivion" id="social-tiktok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.2 3.5v11a3.6 3.6 0 1 1-3.6-3.6c.35 0 .68.05 1 .14"/><path d="M14.2 3.5c.4 2.7 2.3 4.5 5 4.7"/></svg>
+            </a>
           </div>
         </div>
 
         <div class="footer-column">
           <h4>Servicios</h4>
-          <a href="#servicios">Social Media</a>
+          <a href="#servicios">Redes sociales</a>
           <a href="#servicios">SEO</a>
-          <a href="#servicios">Publicidad Digital</a>
-          <a href="#servicios">Diseño Web</a>
-          <a href="#servicios">IA & Automatización</a>
+          <a href="#servicios">Medios de pago</a>
+          <a href="#servicios">Diseño y desarrollo web</a>
+          <a href="#servicios">IA aplicada</a>
         </div>
 
         <div class="footer-column">
-          <h4>Empresa</h4>
-          <a href="#nosotros">Sobre nosotros</a>
+          <h4>Orivion</h4>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#estandares">Estándares</a>
           <a href="#proceso">Proceso</a>
-          <a href="#testimonios">Resultados</a>
-          <a href="#">Blog</a>
-          <a href="#">Carreras</a>
+          <a href="#testimonios">Clientes</a>
         </div>
 
         <div class="footer-column">
           <h4>Contacto</h4>
+          <!-- TODO: email y teléfono reales. El +34 600 000 000 canta mucho. -->
           <a href="mailto:hola@orivion.com">hola@orivion.com</a>
           <a href="tel:+34600000000">+34 600 000 000</a>
-          <a href="#">Madrid, España</a>
+          <span>Valencia, España</span>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Orivion. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Orivion · Valencia</p>
         <div class="footer-bottom-links">
           <a href="privacidad.html">Política de privacidad</a>
           <a href="aviso-legal.html">Aviso legal</a>
@@ -454,12 +644,12 @@
     </div>
   </footer>
 
-  <!-- ======== COOKIE BANNER ======== -->
-  <div class="cookie-banner" id="cookie-banner">
+  <!-- ======== BANNER DE COOKIES ======== -->
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Aviso de cookies">
     <div class="cookie-banner-content">
       <div class="cookie-banner-text">
-        <p><strong>🍪 Cookies</strong></p>
-        <p>Utilizamos cookies propias y de terceros para analizar el uso de la web y mejorar nuestros servicios. Puedes aceptar todas o solo las necesarias. <a href="cookies.html">Más información</a>.</p>
+        <p>Cookies</p>
+        <p>Usamos cookies propias y de terceros para analizar el uso de la web y mejorarla. Puedes aceptar todas o solo las necesarias. <a href="cookies.html">Más información</a>.</p>
       </div>
       <div class="cookie-banner-actions">
         <button class="cookie-btn-reject" id="cookie-reject">Solo necesarias</button>
@@ -469,23 +659,5 @@
   </div>
 
   <script src="script.js"></script>
-  <script>
-    // Cookie consent logic
-    (function() {
-      const banner = document.getElementById('cookie-banner');
-      const consent = localStorage.getItem('orivion_cookie_consent');
-      if (!consent) {
-        banner.classList.add('visible');
-      }
-      document.getElementById('cookie-accept').addEventListener('click', function() {
-        localStorage.setItem('orivion_cookie_consent', 'all');
-        banner.classList.remove('visible');
-      });
-      document.getElementById('cookie-reject').addEventListener('click', function() {
-        localStorage.setItem('orivion_cookie_consent', 'necessary');
-        banner.classList.remove('visible');
-      });
-    })();
-  </script>
 </body>
 </html>

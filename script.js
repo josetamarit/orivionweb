@@ -1,483 +1,309 @@
 /* ============================================
-   ORIVION — Interactive Scripts
+   ORIVION — Scripts
+   Solo lo que aporta algo: navegación, revelado
+   discreto, contadores, carrusel, formulario.
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ============================================
-  // FUTURISTIC SOUND ENGINE (Web Audio API)
-  // ============================================
-  let audioCtx = null;
-  let soundEnabled = false;
-
-  // Lazy init — browsers block AudioContext until user gesture
-  function initAudio() {
-    if (audioCtx) return;
-    try {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      soundEnabled = true;
-    } catch (e) {
-      soundEnabled = false;
-    }
-  }
-
-  // Initialize on first click/touch
-  document.addEventListener('click', initAudio, { once: true });
-  document.addEventListener('touchstart', initAudio, { once: true });
-
-  // --- Click pop: Dark Elegance ---
-  function playClickSound() {
-    if (!soundEnabled || !audioCtx) return;
-    const now = audioCtx.currentTime;
-
-    // Deep sub-bass drop
-    const subOsc = audioCtx.createOscillator();
-    const subGain = audioCtx.createGain();
-    subOsc.type = 'sine';
-    subOsc.frequency.setValueAtTime(150, now);
-    subOsc.frequency.exponentialRampToValueAtTime(40, now + 0.4);
-    subGain.gain.setValueAtTime(0.15, now);
-    subGain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-    subOsc.connect(subGain);
-    subGain.connect(audioCtx.destination);
-    subOsc.start(now);
-    subOsc.stop(now + 0.4);
-
-    // Subtle metallic high shimmer
-    const highOsc = audioCtx.createOscillator();
-    const highGain = audioCtx.createGain();
-    highOsc.type = 'sine';
-    highOsc.frequency.setValueAtTime(1200, now);
-    highOsc.frequency.exponentialRampToValueAtTime(2000, now + 0.1);
-    highGain.gain.setValueAtTime(0.03, now);
-    highGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
-    highOsc.connect(highGain);
-    highGain.connect(audioCtx.destination);
-    highOsc.start(now);
-    highOsc.stop(now + 0.1);
-  }
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ============================================
-  // CUSTOM FUTURISTIC CURSOR
-  // ============================================
-  const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-
-  if (!isTouchDevice) {
-    const cursorOrb = document.getElementById('cursor-orb');
-    const cursorRing = document.getElementById('cursor-ring');
-
-    let mouseX = 0, mouseY = 0;
-    let orbX = 0, orbY = 0;
-    let ringX = 0, ringY = 0;
-    let trailTimer = 0;
-
-    // Track mouse position
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    // Smooth cursor following with lerp
-    function animateCursor() {
-      // Orb follows faster
-      orbX += (mouseX - orbX) * 0.15;
-      orbY += (mouseY - orbY) * 0.15;
-      cursorOrb.style.left = orbX + 'px';
-      cursorOrb.style.top = orbY + 'px';
-
-      // Ring follows slower for trailing effect
-      ringX += (mouseX - ringX) * 0.08;
-      ringY += (mouseY - ringY) * 0.08;
-      cursorRing.style.left = ringX + 'px';
-      cursorRing.style.top = ringY + 'px';
-
-      // Spawn trail particles periodically
-      trailTimer++;
-      if (trailTimer % 3 === 0) {
-        const dx = mouseX - orbX;
-        const dy = mouseY - orbY;
-        const speed = Math.sqrt(dx * dx + dy * dy);
-        if (speed > 2) {
-          spawnTrail(orbX, orbY, speed);
-        }
-      }
-
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    // --- Trail particles ---
-    function spawnTrail(x, y, speed) {
-      const trail = document.createElement('div');
-      trail.className = 'cursor-trail';
-      trail.style.left = x + 'px';
-      trail.style.top = y + 'px';
-      const size = Math.min(3 + speed * 0.15, 8);
-      trail.style.width = size + 'px';
-      trail.style.height = size + 'px';
-      document.body.appendChild(trail);
-      setTimeout(() => trail.remove(), 500);
-    }
-
-    // --- Hover detection ---
-    const hoverTargets = 'a, button, .service-card, .stat-card, .process-step, .testimonial-card, .footer-social, input, textarea, [role="button"]';
-
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest(hoverTargets)) {
-        cursorOrb.classList.add('hovering');
-        cursorRing.classList.add('hovering');
-      }
-    });
-
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest(hoverTargets)) {
-        cursorOrb.classList.remove('hovering');
-        cursorRing.classList.remove('hovering');
-      }
-    });
-
-    // --- Click burst effect ---
-    document.addEventListener('mousedown', (e) => {
-      cursorOrb.classList.add('clicking');
-      cursorRing.classList.add('clicking');
-      createBurst(e.clientX, e.clientY);
-      createRipple(e.clientX, e.clientY);
-      playClickSound();
-    });
-
-    document.addEventListener('mouseup', () => {
-      cursorOrb.classList.remove('clicking');
-      cursorRing.classList.remove('clicking');
-    });
-
-    function createBurst(x, y) {
-      const burst = document.createElement('div');
-      burst.className = 'cursor-burst';
-      burst.style.left = x + 'px';
-      burst.style.top = y + 'px';
-
-      const particleCount = 12;
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'cursor-burst-particle';
-        const angle = (i / particleCount) * Math.PI * 2;
-        const distance = 25 + Math.random() * 35;
-        const tx = Math.cos(angle) * distance;
-        const ty = Math.sin(angle) * distance;
-        particle.style.setProperty('--tx', tx + 'px');
-        particle.style.setProperty('--ty', ty + 'px');
-        // Randomize size
-        const size = 2 + Math.random() * 4;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        burst.appendChild(particle);
-      }
-
-      document.body.appendChild(burst);
-      setTimeout(() => burst.remove(), 700);
-    }
-
-    function createRipple(x, y) {
-      const ripple = document.createElement('div');
-      ripple.className = 'cursor-ripple';
-      ripple.style.left = x + 'px';
-      ripple.style.top = y + 'px';
-      document.body.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 700);
-    }
-
-    // --- Hide cursor when leaving window ---
-    document.addEventListener('mouseleave', () => {
-      cursorOrb.style.opacity = '0';
-      cursorRing.style.opacity = '0';
-    });
-
-    document.addEventListener('mouseenter', () => {
-      cursorOrb.style.opacity = '1';
-      cursorRing.style.opacity = '1';
-    });
-  }
-
-  // ============================================
-  // MAGNETIC HOVER EFFECT
-  // ============================================
-  const magneticElements = document.querySelectorAll('.magnetic-hover');
-
-  magneticElements.forEach(el => {
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-    });
-
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = 'translate(0, 0)';
-    });
-  });
-
-  // ============================================
-  // TILT CARD EFFECT ON SERVICE CARDS
-  // ============================================
-  const tiltCards = document.querySelectorAll('.service-card');
-
-  tiltCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      const tiltX = (y - 0.5) * 8;  // degrees
-      const tiltY = (x - 0.5) * -8;
-      card.style.transform = `translateY(-6px) perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-
-  // ============================================
-  // NAVBAR SCROLL EFFECT
+  // NAVBAR AL HACER SCROLL
   // ============================================
   const navbar = document.getElementById('navbar');
-  const scrollThreshold = 50;
 
-  function handleNavbarScroll() {
-    if (window.scrollY > scrollThreshold) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+  if (navbar) {
+    const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
-  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
-  handleNavbarScroll();
-
   // ============================================
-  // MOBILE MENU TOGGLE
+  // MENÚ MÓVIL
   // ============================================
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
 
-  if (menuToggle) {
+  if (menuToggle && navLinks) {
+    const closeMenu = () => {
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
     menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('open');
-      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.classList.toggle('active', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // Escape cierra el menú
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
     });
   }
 
   // ============================================
-  // SCROLL REVEAL ANIMATIONS
+  // REVELADO AL SCROLL
   // ============================================
-  const revealSelectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate, .stagger-children';
-  const revealElements = document.querySelectorAll(revealSelectors);
+  const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
+  if (prefersReducedMotion) {
+    revealElements.forEach(el => el.classList.add('active'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
         entry.target.classList.add('active');
         revealObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+    revealElements.forEach(el => revealObserver.observe(el));
+  }
 
   // ============================================
-  // COUNTER ANIMATION FOR STATS
+  // CONTADORES
   // ============================================
   const counters = document.querySelectorAll('[data-count]');
 
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(counter => counterObserver.observe(counter));
-
   function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-count'));
+    const target = parseInt(element.getAttribute('data-count'), 10);
+    if (Number.isNaN(target)) return;
+
     const suffix = element.getAttribute('data-suffix') || '';
     const prefix = element.getAttribute('data-prefix') || '';
-    const duration = 2000;
-    const startTime = performance.now();
 
-    function easeOutQuart(t) {
-      return 1 - Math.pow(1 - t, 4);
+    if (prefersReducedMotion) {
+      element.textContent = prefix + target + suffix;
+      return;
     }
 
-    function update(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeOutQuart(progress);
-      const current = Math.floor(target * easedProgress);
-      element.textContent = prefix + current + suffix;
+    const duration = 1600;
+    const startTime = performance.now();
+    const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
 
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
+    function update(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      element.textContent = prefix + Math.floor(target * easeOutQuart(progress)) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
     }
 
     requestAnimationFrame(update);
   }
 
+  if (counters.length) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+  }
+
   // ============================================
-  // TESTIMONIALS CAROUSEL
+  // CARRUSEL DE TESTIMONIOS
   // ============================================
   const track = document.getElementById('testimonials-track');
   const prevBtn = document.getElementById('testimonial-prev');
   const nextBtn = document.getElementById('testimonial-next');
-  const dots = document.querySelectorAll('.testimonial-dot');
+  const dots = Array.from(document.querySelectorAll('.testimonial-dot'));
 
   if (track && prevBtn && nextBtn) {
+    const cards = Array.from(track.querySelectorAll('.testimonial-card'));
     let currentSlide = 0;
-    const cards = track.querySelectorAll('.testimonial-card');
-    let cardsPerView = getCardsPerView();
+    let autoSlide = null;
 
-    function getCardsPerView() {
+    const cardsPerView = () => {
       if (window.innerWidth <= 768) return 1;
       if (window.innerWidth <= 1024) return 2;
       return 3;
+    };
+
+    const maxSlide = () => Math.max(0, cards.length - cardsPerView());
+
+    function render() {
+      if (!cards.length) return;
+      const gap = parseFloat(getComputedStyle(track).gap) || 24;
+      track.style.transform = `translateX(-${currentSlide * (cards[0].offsetWidth + gap)}px)`;
+
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide >= maxSlide();
+      prevBtn.style.opacity = prevBtn.disabled ? '0.35' : '1';
+      nextBtn.style.opacity = nextBtn.disabled ? '0.35' : '1';
     }
 
-    function getMaxSlide() {
-      return Math.max(0, cards.length - cardsPerView);
+    function goTo(index) {
+      currentSlide = Math.max(0, Math.min(index, maxSlide()));
+      render();
     }
 
-    function updateCarousel() {
-      const cardWidth = cards[0].offsetWidth;
-      const gap = parseInt(getComputedStyle(track).gap) || 24;
-      const offset = currentSlide * (cardWidth + gap);
-      track.style.transform = `translateX(-${offset}px)`;
+    prevBtn.addEventListener('click', () => goTo(currentSlide - 1));
+    nextBtn.addEventListener('click', () => goTo(currentSlide + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-      });
+    window.addEventListener('resize', () => goTo(currentSlide));
 
-      prevBtn.style.opacity = currentSlide === 0 ? '0.4' : '1';
-      nextBtn.style.opacity = currentSlide >= getMaxSlide() ? '0.4' : '1';
-    }
-
-    prevBtn.addEventListener('click', () => {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateCarousel();
-      }
-    });
-
-    nextBtn.addEventListener('click', () => {
-      if (currentSlide < getMaxSlide()) {
-        currentSlide++;
-        updateCarousel();
-      }
-    });
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        currentSlide = Math.min(i, getMaxSlide());
-        updateCarousel();
-      });
-    });
-
-    window.addEventListener('resize', () => {
-      cardsPerView = getCardsPerView();
-      currentSlide = Math.min(currentSlide, getMaxSlide());
-      updateCarousel();
-    });
-
-    let autoSlide = setInterval(() => {
-      if (currentSlide < getMaxSlide()) {
-        currentSlide++;
-      } else {
-        currentSlide = 0;
-      }
-      updateCarousel();
-    }, 5000);
-
-    track.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    track.addEventListener('mouseleave', () => {
+    // Avance automático, pausado al pasar por encima o con el teclado dentro
+    function startAuto() {
+      if (prefersReducedMotion || autoSlide) return;
       autoSlide = setInterval(() => {
-        if (currentSlide < getMaxSlide()) {
-          currentSlide++;
-        } else {
-          currentSlide = 0;
-        }
-        updateCarousel();
-      }, 5000);
-    });
+        goTo(currentSlide >= maxSlide() ? 0 : currentSlide + 1);
+      }, 6000);
+    }
 
-    updateCarousel();
+    function stopAuto() {
+      clearInterval(autoSlide);
+      autoSlide = null;
+    }
+
+    track.addEventListener('mouseenter', stopAuto);
+    track.addEventListener('mouseleave', startAuto);
+    track.addEventListener('focusin', stopAuto);
+
+    render();
+    startAuto();
   }
 
   // ============================================
-  // SMOOTH SCROLL FOR NAV LINKS
+  // ENLACES INTERNOS
   // ============================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+      target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     });
   });
 
   // ============================================
-  // ACTIVE NAV LINK ON SCROLL
+  // ENLACE ACTIVO SEGÚN LA SECCIÓN VISIBLE
   // ============================================
-  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = Array.from(document.querySelectorAll('.navbar-links > a[href^="#"]'))
+    .filter(a => a.getAttribute('href').length > 1 && !a.classList.contains('navbar-cta'));
 
-  function updateActiveNav() {
-    const scrollPos = window.scrollY + 100;
+  if (navAnchors.length) {
+    const sections = navAnchors
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
 
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      const id = section.getAttribute('id');
-      const link = document.querySelector(`.navbar-links a[href="#${id}"]`);
+    // Puede haber dos secciones cruzando la franja a la vez, así que
+    // guardamos las visibles y subrayamos solo la primera del documento.
+    const visible = new Set();
 
-      if (link) {
-        if (scrollPos >= top && scrollPos < top + height) {
-          link.style.color = 'var(--text-primary)';
-        } else {
-          link.style.color = '';
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visible.add(entry.target.id);
+        else visible.delete(entry.target.id);
+      });
+
+      const activeId = sections.map(s => s.id).find(id => visible.has(id));
+      navAnchors.forEach(a => {
+        a.classList.toggle('current', a.getAttribute('href') === `#${activeId}`);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    sections.forEach(section => sectionObserver.observe(section));
+  }
+
+  // ============================================
+  // FORMULARIO DE CONTACTO
+  // ============================================
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  if (form && status) {
+    const submitBtn = document.getElementById('submit-btn');
+    const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+    function showStatus(message, type) {
+      status.textContent = message;
+      status.className = `form-status visible ${type}`;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Aviso claro mientras el endpoint siga siendo el de ejemplo
+      if (form.action.includes('TU_ID_DE_FORMSPREE')) {
+        showStatus('El formulario todavía no está conectado. Escríbenos a hola@orivion.com mientras lo arreglamos.', 'error');
+        console.warn('[Orivion] Falta configurar el endpoint del formulario en index.html.');
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando…';
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        form.reset();
+        showStatus('Recibido. Te contestamos en menos de 24 h laborables.', 'success');
+      } catch (error) {
+        console.error('[Orivion] Error al enviar el formulario:', error);
+        showStatus('No hemos podido enviarlo. Prueba otra vez o escríbenos a hola@orivion.com.', 'error');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
         }
       }
     });
   }
 
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-
   // ============================================
-  // PARALLAX SCROLL FOR HERO ORBS
+  // CONSENTIMIENTO DE COOKIES
   // ============================================
-  const heroOrbs = document.querySelectorAll('.hero-orb');
+  const banner = document.getElementById('cookie-banner');
 
-  if (heroOrbs.length > 0) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      heroOrbs.forEach((orb, i) => {
-        const speed = 0.1 + i * 0.05;
-        orb.style.transform = `translateY(${scrollY * speed}px)`;
-      });
-    }, { passive: true });
+  if (banner) {
+    const STORAGE_KEY = 'orivion_cookie_consent';
+
+    let stored = null;
+    try {
+      stored = localStorage.getItem(STORAGE_KEY);
+    } catch (e) {
+      // Navegación privada o almacenamiento bloqueado: no insistimos.
+    }
+
+    if (!stored) banner.classList.add('visible');
+
+    function saveConsent(value) {
+      try {
+        localStorage.setItem(STORAGE_KEY, value);
+      } catch (e) {
+        // Si no se puede guardar, al menos ocultamos el banner en esta visita.
+      }
+      banner.classList.remove('visible');
+    }
+
+    const acceptBtn = document.getElementById('cookie-accept');
+    const rejectBtn = document.getElementById('cookie-reject');
+
+    if (acceptBtn) acceptBtn.addEventListener('click', () => saveConsent('all'));
+    if (rejectBtn) rejectBtn.addEventListener('click', () => saveConsent('necessary'));
   }
 
 });
-

@@ -5,25 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Privacidad — Orivion</title>
   <meta name="description" content="Política de privacidad de Orivion. Información sobre el tratamiento de datos personales conforme al RGPD.">
-  <meta name="theme-color" content="#0a0a0f">
+  <meta name="theme-color" content="#08080D">
+
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .legal-page { padding: 120px 0 80px; min-height: 100vh; }
-    .legal-page h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .legal-page .legal-updated { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 3rem; }
-    .legal-page h2 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--text-primary); }
-    .legal-page h3 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.8rem; color: var(--text-secondary); }
-    .legal-page p, .legal-page li { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
-    .legal-page ul { padding-left: 1.5rem; margin-bottom: 1.5rem; }
-    .legal-page li { margin-bottom: 0.5rem; }
-    .legal-page a { color: var(--accent-primary); text-decoration: underline; }
-    .legal-page a:hover { color: var(--accent-secondary); }
-    .legal-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; margin-bottom: 2rem; transition: color 0.3s; }
-    .legal-back:hover { color: var(--text-primary); }
-    .legal-page table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-    .legal-page th, .legal-page td { border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; text-align: left; color: var(--text-secondary); }
-    .legal-page th { background: rgba(255,255,255,0.05); color: var(--text-primary); font-weight: 600; }
-  </style>
+  <!-- Marca que el JS ha arrancado. Sin esto el contenido no se oculta nunca. -->
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -31,14 +23,23 @@
   <nav class="navbar scrolled" id="navbar">
     <div class="container">
       <a href="index.html" class="navbar-logo">
-        <span class="logo-icon">O</span>
-        Orivion
+        <img class="logo-img" src="img/orivion-logo.png" alt="Orivion" width="396" height="84" decoding="async">
       </a>
       <div class="navbar-links" id="nav-links">
         <a href="index.html#servicios">Servicios</a>
         <a href="index.html#nosotros">Nosotros</a>
-        <a href="index.html#contacto" class="navbar-cta">Hablemos →</a>
+        <a href="index.html#estandares">Estándares</a>
+        <a href="index.html#contacto" class="navbar-cta">
+          Hablemos
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -56,7 +57,7 @@
         <tr><th>Dato</th><th>Información</th></tr>
         <tr><td>Identidad</td><td>Orivion (nombre comercial)</td></tr>
         <tr><td>NIF/CIF</td><td>[PENDIENTE DE COMPLETAR]</td></tr>
-        <tr><td>Dirección</td><td>Madrid, España</td></tr>
+        <tr><td>Dirección</td><td>Valencia, España</td></tr>
         <tr><td>Email de contacto</td><td><a href="mailto:hola@orivion.com">hola@orivion.com</a></td></tr>
         <tr><td>Teléfono</td><td>+34 600 000 000</td></tr>
       </table>
@@ -139,5 +140,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
