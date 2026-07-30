@@ -303,21 +303,30 @@ button {
 .navbar-links > a:hover::after,
 .navbar-links > a.current::after { transform: scaleX(1); }
 
-.navbar-cta {
-  display: inline-flex !important;
+/* Se cualifica con `.navbar-links > a` a propósito: esa regla tiene más
+   especificidad que una clase sola, así que antes le ganaba al botón y lo
+   dejaba con `padding: 4px 0` (el violeta pegado al texto) y con el peso de
+   un enlace normal. Con la especificidad bien puesta no hace falta ningún
+   !important. */
+.navbar-links > a.navbar-cta {
+  display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.6rem 1.15rem;
+  gap: 0.5rem;
+  padding: 0.72rem 1.3rem;
   background: var(--violet-deep);
-  color: #fff !important;
+  color: #fff;
+  font-size: 0.9375rem;
   font-weight: 500;
-  font-size: 0.9rem;
+  line-height: 1;
   border-radius: var(--radius-sm);
   transition: background var(--transition-fast);
 }
 
-.navbar-cta::after { display: none; }
-.navbar-cta:hover { background: var(--violet-dark); }
+/* El subrayado de los enlaces no pinta nada sobre un botón relleno */
+.navbar-links > a.navbar-cta::after { display: none; }
+
+.navbar-links > a.navbar-cta:hover { background: var(--violet-dark); }
+
 .navbar-cta svg { transition: transform var(--transition-base); }
 .navbar-cta:hover svg { transform: translateX(3px); }
 
@@ -1525,10 +1534,11 @@ button {
 
   .navbar-links > a::after { display: none; }
 
-  .navbar-cta {
+  .navbar-links > a.navbar-cta {
     justify-content: center;
+    padding: 0.95rem 1.3rem;
     margin-top: var(--space-lg);
-    border-bottom: none !important;
+    border-bottom: none;
   }
 
   .hero { padding-top: calc(var(--navbar-height) + 2.5rem); }
