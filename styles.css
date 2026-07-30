@@ -6,7 +6,8 @@
    1. El degradado vive SOLO en el logo. En ningún otro sitio.
    2. Cero glassmorphism, cero orbes, cero glow, cero blur decorativo.
    3. El violeta es una señal (1px, un punto, un relleno), no un lavado.
-   4. Esquinas casi rectas y retícula de 1px: instrumento, no burbuja.
+   4. Esquinas casi rectas y filetes de 1px que separan contenido real,
+      nunca retículas decorativas de fondo.
    5. Etiquetas y cifras en monoespaciada. Es lo que da el tono técnico.
    ============================================ */
 
@@ -36,7 +37,7 @@
   --text-muted:     #7A7A92;   /* alias usado en páginas legales */
 
   /* --- Tipografía --- */
-  --font-display: 'Space Grotesk', 'Inter Tight', -apple-system, sans-serif;
+  --font-display: 'Sora', 'Inter Tight', -apple-system, sans-serif;
   --font-body: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
@@ -188,7 +189,7 @@ button {
 
 .section-label.mx-auto { display: flex; width: fit-content; }
 
-/* Titulares: Space Grotesk, tracking cerrado */
+/* Titulares: Sora, tracking cerrado */
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2.1rem, 4.6vw, 3.5rem);
@@ -286,17 +287,21 @@ button {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 0;
+  width: 100%;
   height: 1.5px;
   background: var(--violet);
-  transition: width var(--transition-base);
+  /* Se escala en lugar de crecer de ancho: así el subrayado no provoca
+     recálculo de posiciones en cada fotograma. */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
 }
 
 .navbar-links > a:hover,
 .navbar-links > a.current { color: var(--text-primary); }
 
 .navbar-links > a:hover::after,
-.navbar-links > a.current::after { width: 100%; }
+.navbar-links > a.current::after { transform: scaleX(1); }
 
 .navbar-cta {
   display: inline-flex !important;
@@ -344,21 +349,11 @@ button {
   overflow: hidden;
 }
 
-/* Retícula de 1px. Nada de resplandores: esto es un plano, no una nebulosa. */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, var(--line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
-  background-size: 72px 72px;
-  opacity: 0.55;
-  mask-image: radial-gradient(120% 90% at 12% 0%, #000 0%, transparent 72%);
-  -webkit-mask-image: radial-gradient(120% 90% at 12% 0%, #000 0%, transparent 72%);
-}
-
+/* Aquí había una retícula de líneas de 1px de fondo. Fuera: el campo de
+   líneas tenue detrás del hero es otro tic de plantilla generada, igual que
+   el degradado morado. La estructura la dan las reglas reales de la página
+   (la tabla de servicios, el panel, los filetes entre secciones), que sí
+   separan contenido en lugar de hacer de papel pintado. */
 .hero .container { position: relative; }
 
 .hero-layout {
@@ -606,14 +601,16 @@ button {
   position: absolute;
   left: 0;
   top: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
   background: var(--violet);
-  transition: width var(--transition-base);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
 }
 
 .service-card:hover { background: var(--surface); }
-.service-card:hover::after { width: 100%; }
+.service-card:hover::after { transform: scaleX(1); }
 
 .service-icon {
   width: 28px;
@@ -986,17 +983,28 @@ button {
 
 .testimonial-dots { display: flex; gap: 0.45rem; }
 
+/* El punto ocupa siempre 22 px y lo que se estira es la barra de dentro.
+   Así al pasar de punto a barra no se mueven los hermanos de al lado. */
 .testimonial-dot {
-  width: 6px;
+  width: 22px;
   height: 6px;
-  background: var(--line-strong);
   cursor: pointer;
-  transition: background var(--transition-fast), width var(--transition-base);
+  display: block;
 }
 
-.testimonial-dot.active {
+.testimonial-dot::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--line-strong);
+  transform: scaleX(0.273);
+  transition: transform var(--transition-base), background var(--transition-fast);
+}
+
+.testimonial-dot.active::before {
   background: var(--violet);
-  width: 22px;
+  transform: scaleX(1);
 }
 
 /* ============================================
