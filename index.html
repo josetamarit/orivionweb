@@ -14,9 +14,11 @@
   <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Fuentes autoalojadas: cargarlas desde Google enviaria la IP del
+       visitante a un tercero antes de que haya consentido nada. -->
+  <link rel="preload" href="fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="styles.css">
   <!-- Marca que el JS ha arrancado. Sin esto el contenido no se oculta nunca. -->
   <script>document.documentElement.classList.add('js');</script>
@@ -559,9 +561,33 @@
             <label for="message">¿Qué quieres resolver?</label>
           </div>
 
+          <!-- Casilla sin premarcar: el RGPD exige un acto afirmativo claro,
+               y un "al enviar aceptas" no lo es. -->
+          <label class="form-consent" for="consent">
+            <input type="checkbox" name="consent" id="consent" value="si" required>
+            <span>He leído y acepto la <a href="privacidad.html">política de privacidad</a>.</span>
+          </label>
+
+          <!-- Información básica en el propio punto de recogida, como pide la
+               AEPD. La capa detallada está en la política de privacidad. -->
+          <details class="form-info">
+            <summary>Información básica sobre protección de datos</summary>
+            <dl>
+              <dt>Responsable</dt>
+              <dd>Orivion.</dd>
+              <dt>Finalidad</dt>
+              <dd>Atender tu consulta y, si procede, enviarte una propuesta de servicios.</dd>
+              <dt>Legitimación</dt>
+              <dd>Tu consentimiento, prestado al marcar la casilla.</dd>
+              <dt>Destinatarios</dt>
+              <dd>Nuestros proveedores de formulario y alojamiento, como encargados del tratamiento. No se ceden datos a terceros salvo obligación legal.</dd>
+              <dt>Derechos</dt>
+              <dd>Acceder, rectificar y suprimir tus datos, además del resto de derechos que se detallan en la <a href="privacidad.html">política de privacidad</a>.</dd>
+            </dl>
+          </details>
+
           <div class="form-footer">
             <p class="form-legal">
-              Al enviar aceptas nuestra <a href="privacidad.html">política de privacidad</a>.
               Respondemos en menos de 24 h laborables.
             </p>
             <button type="submit" class="btn-primary" id="submit-btn">
@@ -626,9 +652,9 @@
 
         <div class="footer-column">
           <h4>Contacto</h4>
-          <!-- TODO: email y teléfono reales. El +34 600 000 000 canta mucho. -->
-          <a href="mailto:hola@orivion.com">hola@orivion.com</a>
-          <a href="tel:+34600000000">+34 600 000 000</a>
+          <!-- Sin email todavía. Cuando exista hay que añadirlo aquí y, sobre
+               todo, en el aviso legal: el art. 10.1.a de la LSSI lo exige. -->
+          <a href="tel:+34647551881">+34 647 55 18 81</a>
           <span>Valencia, España</span>
         </div>
       </div>
@@ -639,6 +665,7 @@
           <a href="privacidad.html">Política de privacidad</a>
           <a href="aviso-legal.html">Aviso legal</a>
           <a href="cookies.html">Cookies</a>
+          <a href="cookies.html" data-cookie-settings>Preferencias de cookies</a>
         </div>
       </div>
     </div>
@@ -649,7 +676,7 @@
     <div class="cookie-banner-content">
       <div class="cookie-banner-text">
         <p>Cookies</p>
-        <p>Usamos cookies propias y de terceros para analizar el uso de la web y mejorarla. Puedes aceptar todas o solo las necesarias. <a href="cookies.html">Más información</a>.</p>
+        <p>Guardamos en tu navegador la preferencia que elijas aquí. Ahora mismo <strong>no usamos cookies analíticas ni publicitarias</strong> y no cargamos nada desde servidores de terceros; si algún día las añadimos, solo se activarán si las aceptas. <a href="cookies.html">Más información</a>.</p>
       </div>
       <div class="cookie-banner-actions">
         <button class="cookie-btn-reject" id="cookie-reject">Solo necesarias</button>

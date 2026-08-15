@@ -1113,6 +1113,95 @@ button {
   text-transform: uppercase;
 }
 
+/* --- Consentimiento e información básica --- */
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.form-consent input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.form-consent input:hover { border-color: var(--violet); }
+
+.form-consent input:checked {
+  background: var(--violet-deep);
+  border-color: var(--violet-deep);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4.5 4.5L19 7'/%3E%3C/svg%3E");
+  background-size: 13px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.form-consent a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-consent a:hover { color: var(--violet-bright); }
+
+.form-info {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 1rem;
+}
+
+.form-info summary {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  cursor: pointer;
+}
+
+.form-info summary:hover { color: var(--violet-bright); }
+
+.form-info dl {
+  display: grid;
+  grid-template-columns: minmax(6rem, auto) 1fr;
+  gap: 0.45rem 1rem;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+.form-info dt {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--violet-bright);
+  padding-top: 0.15rem;
+}
+
+.form-info dd { color: var(--text-secondary); }
+
+.form-info a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .form-footer {
   display: flex;
   flex-wrap: wrap;
@@ -1557,6 +1646,9 @@ button {
   .testimonial-card { flex: 0 0 100%; }
 
   .form-row { grid-template-columns: 1fr; }
+
+  .form-info dl { grid-template-columns: 1fr; gap: 0.15rem; }
+  .form-info dd { margin-bottom: 0.6rem; }
 
   .form-footer { flex-direction: column; align-items: stretch; }
   .form-footer .btn-primary { justify-content: center; }

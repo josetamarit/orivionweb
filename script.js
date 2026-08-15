@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Aviso claro mientras el endpoint siga siendo el de ejemplo
       if (form.action.includes('TU_ID_DE_FORMSPREE')) {
-        showStatus('El formulario todavía no está conectado. Escríbenos a hola@orivion.com mientras lo arreglamos.', 'error');
+        showStatus('El formulario todavía no está conectado. Llámanos al +34 647 55 18 81 mientras lo arreglamos.', 'error');
         console.warn('[Orivion] Falta configurar el endpoint del formulario en index.html.');
         return;
       }
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showStatus('Recibido. Te contestamos en menos de 24 h laborables.', 'success');
       } catch (error) {
         console.error('[Orivion] Error al enviar el formulario:', error);
-        showStatus('No hemos podido enviarlo. Prueba otra vez o escríbenos a hola@orivion.com.', 'error');
+        showStatus('No hemos podido enviarlo. Prueba otra vez o llámanos al +34 647 55 18 81.', 'error');
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -280,30 +280,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (banner) {
     const STORAGE_KEY = 'orivion_cookie_consent';
+    // La política de cookies declara 12 meses de duración. Si no caducara,
+    // esa duración sería falsa y además la guía de cookies de la AEPD exige
+    // renovar el consentimiento periódicamente.
+    const MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 
-    let stored = null;
-    try {
-      stored = localStorage.getItem(STORAGE_KEY);
-    } catch (e) {
-      // Navegación privada o almacenamiento bloqueado: no insistimos.
+    function readConsent() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+
+        const saved = JSON.parse(raw);
+        if (!saved || typeof saved.ts !== 'number') return null;
+        if (Date.now() - saved.ts > MAX_AGE_MS) {
+          localStorage.removeItem(STORAGE_KEY);
+          return null;
+        }
+        return saved.value;
+      } catch (e) {
+        // Formato antiguo, JSON corrupto o almacenamiento bloqueado.
+        return null;
+      }
     }
-
-    if (!stored) banner.classList.add('visible');
 
     function saveConsent(value) {
       try {
-        localStorage.setItem(STORAGE_KEY, value);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ value, ts: Date.now() }));
       } catch (e) {
-        // Si no se puede guardar, al menos ocultamos el banner en esta visita.
+        // Navegación privada: al menos ocultamos el banner en esta visita.
       }
       banner.classList.remove('visible');
+      // Aquí es donde habría que cargar analítica o píxeles cuando existan,
+      // y solo si value === 'all'.
     }
+
+    function openBanner() {
+      banner.classList.add('visible');
+      const first = banner.querySelector('button');
+      if (first) first.focus();
+    }
+
+    if (!readConsent()) openBanner();
 
     const acceptBtn = document.getElementById('cookie-accept');
     const rejectBtn = document.getElementById('cookie-reject');
 
     if (acceptBtn) acceptBtn.addEventListener('click', () => saveConsent('all'));
     if (rejectBtn) rejectBtn.addEventListener('click', () => saveConsent('necessary'));
+
+    // Retirar el consentimiento tiene que ser tan fácil como darlo, así que
+    // cualquier enlace con data-cookie-settings vuelve a abrir el banner.
+    document.querySelectorAll('[data-cookie-settings]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        openBanner();
+      });
+    });
   }
 
 });

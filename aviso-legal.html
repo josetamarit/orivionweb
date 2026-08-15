@@ -10,9 +10,11 @@
   <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Fuentes autoalojadas: cargarlas desde Google enviaria la IP del
+       visitante a un tercero antes de que haya consentido nada. -->
+  <link rel="preload" href="fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="styles.css">
   <!-- Marca que el JS ha arrancado. Sin esto el contenido no se oculta nunca. -->
   <script>document.documentElement.classList.add('js');</script>
@@ -48,7 +50,7 @@
       <a href="index.html" class="legal-back">← Volver al inicio</a>
 
       <h1>Aviso Legal</h1>
-      <p class="legal-updated">Última actualización: 14 de julio de 2026</p>
+      <p class="legal-updated">Última actualización: 15 de agosto de 2026</p>
 
       <p>En cumplimiento del artículo 10 de la <strong>Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE)</strong>, a continuación se exponen los datos identificativos del titular de este sitio web.</p>
 
@@ -58,8 +60,17 @@
         <tr><td>Denominación social</td><td>Orivion (nombre comercial)</td></tr>
         <tr><td>NIF/CIF</td><td>[PENDIENTE DE COMPLETAR]</td></tr>
         <tr><td>Domicilio social</td><td>Valencia, España</td></tr>
-        <tr><td>Email</td><td><a href="mailto:hola@orivion.com">hola@orivion.com</a></td></tr>
-        <tr><td>Teléfono</td><td>+34 600 000 000</td></tr>
+        <tr><td>Teléfono</td><td><a href="tel:+34647551881">+34 647 55 18 81</a></td></tr>
+        <!-- ⚠️ FALTA EL CORREO ELECTRÓNICO Y ES OBLIGATORIO.
+             El art. 10.1.a de la LSSI-CE exige publicar "su dirección de correo
+             electrónico y cualquier otro dato que permita establecer con él una
+             comunicación directa y efectiva". El teléfono es un dato adicional,
+             no un sustituto: mientras no haya un correo publicado aquí, esta
+             página no cumple la LSSI. En cuanto exista el buzón, añadir:
+             <tr><td>Email</td><td><a href="mailto:...">...</a></td></tr>
+             y también en el pie de index.html y en el apartado 1 de
+             privacidad.html. -->
+
         <tr><td>Actividad</td><td>Servicios de marketing digital y consultoría</td></tr>
         <tr><td>Datos registrales</td><td>[PENDIENTE DE COMPLETAR — Inscripción en el Registro Mercantil]</td></tr>
       </table>
@@ -110,10 +121,25 @@
           <a href="privacidad.html">Privacidad</a>
           <a href="aviso-legal.html">Aviso Legal</a>
           <a href="cookies.html">Cookies</a>
+          <a href="cookies.html" data-cookie-settings>Preferencias de cookies</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- ======== BANNER DE COOKIES ======== -->
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Aviso de cookies">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p>Cookies</p>
+        <p>Guardamos en tu navegador la preferencia que elijas aquí. Ahora mismo <strong>no usamos cookies analíticas ni publicitarias</strong> y no cargamos nada desde servidores de terceros; si algún día las añadimos, solo se activarán si las aceptas. <a href="cookies.html">Más información</a>.</p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn-reject" id="cookie-reject">Solo necesarias</button>
+        <button class="cookie-btn-accept" id="cookie-accept">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

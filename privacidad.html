@@ -10,9 +10,11 @@
   <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Fuentes autoalojadas: cargarlas desde Google enviaria la IP del
+       visitante a un tercero antes de que haya consentido nada. -->
+  <link rel="preload" href="fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="styles.css">
   <!-- Marca que el JS ha arrancado. Sin esto el contenido no se oculta nunca. -->
   <script>document.documentElement.classList.add('js');</script>
@@ -48,7 +50,7 @@
       <a href="index.html" class="legal-back">← Volver al inicio</a>
 
       <h1>Política de Privacidad</h1>
-      <p class="legal-updated">Última actualización: 14 de julio de 2026</p>
+      <p class="legal-updated">Última actualización: 15 de agosto de 2026</p>
 
       <p>En <strong>Orivion</strong> nos comprometemos a proteger tu privacidad y a tratar tus datos personales de forma transparente, conforme al <strong>Reglamento General de Protección de Datos (RGPD) — Reglamento (UE) 2016/679</strong> y a la <strong>Ley Orgánica 3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD)</strong>.</p>
 
@@ -58,32 +60,31 @@
         <tr><td>Identidad</td><td>Orivion (nombre comercial)</td></tr>
         <tr><td>NIF/CIF</td><td>[PENDIENTE DE COMPLETAR]</td></tr>
         <tr><td>Dirección</td><td>Valencia, España</td></tr>
-        <tr><td>Email de contacto</td><td><a href="mailto:hola@orivion.com">hola@orivion.com</a></td></tr>
-        <tr><td>Teléfono</td><td>+34 600 000 000</td></tr>
+        <tr><td>Teléfono de contacto</td><td><a href="tel:+34647551881">+34 647 55 18 81</a></td></tr>
       </table>
 
       <h2>2. ¿Qué datos personales recogemos?</h2>
       <p>Recogemos los datos que tú nos facilitas directamente:</p>
       <ul>
-        <li><strong>Datos de contacto:</strong> nombre, dirección de correo electrónico, número de teléfono, nombre de empresa.</li>
-        <li><strong>Datos de navegación:</strong> dirección IP, tipo de navegador, páginas visitadas, tiempo de permanencia (a través de cookies analíticas, si las consientes).</li>
-        <li><strong>Datos de comunicación:</strong> el contenido de los mensajes que nos envías a través de formularios de contacto o correo electrónico.</li>
+        <li><strong>Datos de contacto:</strong> nombre, dirección de correo electrónico y, opcionalmente, el nombre de tu empresa o proyecto, cuando rellenas el formulario de contacto.</li>
+        <li><strong>Datos de comunicación:</strong> el contenido de los mensajes que nos envías a través del formulario de contacto o por teléfono.</li>
+        <li><strong>Registros técnicos del servidor:</strong> nuestro proveedor de alojamiento registra de forma automática la dirección IP, la fecha y hora de la petición y el tipo de navegador, por motivos de seguridad y funcionamiento del servicio.</li>
       </ul>
+      <p><strong>No utilizamos herramientas de analítica web ni de publicidad.</strong> Esta web no instala cookies analíticas ni publicitarias, no perfila tu comportamiento de navegación y no carga recursos desde servidores de terceros. Puedes comprobar el detalle en nuestra <a href="cookies.html">política de cookies</a>.</p>
 
       <h2>3. ¿Con qué finalidad tratamos tus datos?</h2>
       <ul>
         <li>Responder a tus consultas y solicitudes de información.</li>
         <li>Gestionar la relación contractual si contratas nuestros servicios.</li>
         <li>Enviarte comunicaciones comerciales sobre nuestros servicios (solo si nos has dado tu consentimiento).</li>
-        <li>Analizar el uso de la web para mejorar la experiencia de usuario.</li>
         <li>Cumplir con obligaciones legales y fiscales.</li>
       </ul>
 
       <h2>4. Base legal del tratamiento</h2>
       <ul>
-        <li><strong>Consentimiento del interesado</strong> (art. 6.1.a RGPD): para el envío de comunicaciones comerciales y el uso de cookies no esenciales.</li>
+        <li><strong>Consentimiento del interesado</strong> (art. 6.1.a RGPD): para atender la consulta que nos envías por el formulario de contacto, que prestas al marcar la casilla correspondiente, y para el envío de comunicaciones comerciales. Puedes retirarlo en cualquier momento.</li>
         <li><strong>Ejecución de un contrato</strong> (art. 6.1.b RGPD): para gestionar la prestación de servicios contratados.</li>
-        <li><strong>Interés legítimo</strong> (art. 6.1.f RGPD): para responder a tus consultas y mejorar nuestros servicios.</li>
+        <li><strong>Interés legítimo</strong> (art. 6.1.f RGPD): para garantizar la seguridad y el correcto funcionamiento del sitio web mediante los registros técnicos del servidor.</li>
         <li><strong>Obligación legal</strong> (art. 6.1.c RGPD): para cumplir con obligaciones fiscales y legales.</li>
       </ul>
 
@@ -96,14 +97,26 @@
       </ul>
 
       <h2>6. ¿Compartimos tus datos con terceros?</h2>
-      <p>No vendemos ni cedemos tus datos personales a terceros. Solo compartimos datos cuando es estrictamente necesario:</p>
-      <ul>
-        <li><strong>Proveedores de servicios:</strong> herramientas de email, hosting, analítica web (actuando como encargados de tratamiento con contrato firmado).</li>
-        <li><strong>Obligaciones legales:</strong> cuando una autoridad pública lo requiera legalmente.</li>
-      </ul>
-      <p>En caso de transferencias internacionales de datos, nos aseguramos de que existan garantías adecuadas conforme al RGPD (cláusulas contractuales tipo, decisión de adecuación, etc.).</p>
+      <p>No vendemos ni cedemos tus datos personales. Solo acceden a ellos los proveedores que necesitamos para prestar el servicio, que actúan como <strong>encargados del tratamiento</strong> conforme al artículo 28 del RGPD:</p>
+      <table>
+        <tr><th>Proveedor</th><th>Servicio</th><th>Ubicación</th></tr>
+        <tr><td>Vercel Inc.</td><td>Alojamiento del sitio web y registros técnicos del servidor</td><td>EE. UU., con infraestructura en la UE</td></tr>
+      </table>
+      <!-- TODO: cuando se conecte el formulario, anadir aqui el proveedor
+           (Formspree, EE. UU.) y su base para la transferencia internacional. -->
+      <p>También comunicaremos tus datos cuando exista una <strong>obligación legal</strong>, por ejemplo ante un requerimiento de una autoridad pública, la Administración tributaria o los tribunales.</p>
+      <p>Algunos de estos proveedores están establecidos fuera del Espacio Económico Europeo. En esos casos las transferencias se amparan en las garantías previstas en el capítulo V del RGPD: el <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> cuando el proveedor está certificado, o las <strong>cláusulas contractuales tipo</strong> aprobadas por la Comisión Europea.</p>
 
-      <h2>7. Tus derechos</h2>
+      <h2>7. Decisiones automatizadas y elaboración de perfiles</h2>
+      <p>No tomamos decisiones basadas únicamente en el tratamiento automatizado de tus datos, ni elaboramos perfiles que produzcan efectos jurídicos sobre ti o te afecten de modo similarmente significativo.</p>
+
+      <h2>8. ¿Estás obligado a facilitarnos tus datos?</h2>
+      <p>No. Facilitar tus datos es voluntario. Ahora bien, los campos marcados como obligatorios en el formulario de contacto son necesarios para poder atender tu consulta: si no los rellenas, no podremos responderte.</p>
+
+      <h2>9. Delegado de Protección de Datos</h2>
+      <p>No hemos designado un Delegado de Protección de Datos, al no concurrir ninguno de los supuestos que lo hacen obligatorio conforme al artículo 37 del RGPD y al artículo 34 de la LOPDGDD. Para cualquier cuestión relacionada con tus datos puedes dirigirte directamente a los datos de contacto indicados en el apartado 1.</p>
+
+      <h2>10. Tus derechos</h2>
       <p>Conforme al RGPD, tienes derecho a:</p>
       <ul>
         <li><strong>Acceso:</strong> conocer qué datos personales tenemos sobre ti.</li>
@@ -114,13 +127,13 @@
         <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y legible por máquina.</li>
         <li><strong>Retirada del consentimiento:</strong> retirar tu consentimiento en cualquier momento, sin que ello afecte a la licitud del tratamiento previo.</li>
       </ul>
-      <p>Para ejercer cualquiera de estos derechos, envía un correo a <a href="mailto:hola@orivion.com">hola@orivion.com</a> indicando tu identidad y el derecho que deseas ejercer. Responderemos en un plazo máximo de 30 días.</p>
+      <p>Para ejercer cualquiera de estos derechos, llámanos al <a href="tel:+34647551881">+34 647 55 18 81</a> indicando tu identidad y el derecho que deseas ejercer. Responderemos en un plazo máximo de 30 días.</p>
       <p>También tienes derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> — <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>
 
-      <h2>8. Seguridad</h2>
+      <h2>11. Seguridad</h2>
       <p>Aplicamos medidas técnicas y organizativas adecuadas para proteger tus datos personales contra el acceso, alteración, divulgación o destrucción no autorizada.</p>
 
-      <h2>9. Cambios en esta política</h2>
+      <h2>12. Cambios en esta política</h2>
       <p>Nos reservamos el derecho de modificar esta política de privacidad. Cualquier cambio será publicado en esta página con la fecha de actualización correspondiente.</p>
 
     </div>
@@ -135,10 +148,25 @@
           <a href="privacidad.html">Privacidad</a>
           <a href="aviso-legal.html">Aviso Legal</a>
           <a href="cookies.html">Cookies</a>
+          <a href="cookies.html" data-cookie-settings>Preferencias de cookies</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- ======== BANNER DE COOKIES ======== -->
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Aviso de cookies">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-text">
+        <p>Cookies</p>
+        <p>Guardamos en tu navegador la preferencia que elijas aquí. Ahora mismo <strong>no usamos cookies analíticas ni publicitarias</strong> y no cargamos nada desde servidores de terceros; si algún día las añadimos, solo se activarán si las aceptas. <a href="cookies.html">Más información</a>.</p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn-reject" id="cookie-reject">Solo necesarias</button>
+        <button class="cookie-btn-accept" id="cookie-accept">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
