@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Aviso claro mientras el endpoint siga siendo el de ejemplo
       if (form.action.includes('TU_ID_DE_FORMSPREE')) {
-        showStatus('El formulario todavía no está conectado. Llámanos al +34 647 55 18 81 mientras lo arreglamos.', 'error');
+        showStatus('El formulario todavía no está conectado. Llámanos al +34 673 77 49 70 mientras lo arreglamos.', 'error');
         console.warn('[Orivion] Falta configurar el endpoint del formulario en index.html.');
         return;
       }
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showStatus('Recibido. Te contestamos en menos de 24 h laborables.', 'success');
       } catch (error) {
         console.error('[Orivion] Error al enviar el formulario:', error);
-        showStatus('No hemos podido enviarlo. Prueba otra vez o llámanos al +34 647 55 18 81.', 'error');
+        showStatus('No hemos podido enviarlo. Prueba otra vez o llámanos al +34 673 77 49 70.', 'error');
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
