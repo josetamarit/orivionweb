@@ -1,7 +1,7 @@
 /* ============================================
    ORIVION — Scripts
    Solo lo que aporta algo: navegación, revelado
-   discreto, contadores, carrusel, formulario.
+   discreto, contadores, carrusel y cookies.
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -218,59 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { rootMargin: '-45% 0px -50% 0px' });
 
     sections.forEach(section => sectionObserver.observe(section));
-  }
-
-  // ============================================
-  // FORMULARIO DE CONTACTO
-  // ============================================
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
-
-  if (form && status) {
-    const submitBtn = document.getElementById('submit-btn');
-    const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
-
-    function showStatus(message, type) {
-      status.textContent = message;
-      status.className = `form-status visible ${type}`;
-    }
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Aviso claro mientras el endpoint siga siendo el de ejemplo
-      if (form.action.includes('TU_ID_DE_FORMSPREE')) {
-        showStatus('El formulario todavía no está conectado. Llámanos al +34 673 77 49 70 mientras lo arreglamos.', 'error');
-        console.warn('[Orivion] Falta configurar el endpoint del formulario en index.html.');
-        return;
-      }
-
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando…';
-      }
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
-        });
-
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-        form.reset();
-        showStatus('Recibido. Te contestamos en menos de 24 h laborables.', 'success');
-      } catch (error) {
-        console.error('[Orivion] Error al enviar el formulario:', error);
-        showStatus('No hemos podido enviarlo. Prueba otra vez o llámanos al +34 673 77 49 70.', 'error');
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHTML;
-        }
-      }
-    });
   }
 
   // ============================================
